@@ -43,6 +43,16 @@ spec:
         default: false
         x-descriptors:
         - 'urn:alm:descriptor:com.tectonic.ui:checkbox'
+      headerFilterStrategy:
+        title: Header Filter Strategy
+        description:  To use a custom org.apache.camel.spi.HeaderFilterStrategy to filter header to and from Camel message. 
+        type: string
+        default: HeaderFilterStrategy
+      httpMethodRestrict  :
+        title: HTTP Method Restrict
+        description:   	Used to only allow consuming if the HttpMethod matches, such as GET/POST/PUT etc. Multiple methods can be specified separated by comma.
+        type: string
+        default: ""
   flow:
     from:
       uri: "kamelet:source"
