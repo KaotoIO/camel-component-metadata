@@ -13,4 +13,10 @@ spec:
   definition:
     title: "Message Router: Choice"
     description: "The Content Based Router from the EIP patterns allows you to route messages to the correct destination based on the contents of the message exchanges."
+    required:
     properties:
+      simple:
+        title: Conditional in Simple form
+        description: Conditional to apply to go through this branch
+        type: string
+        default: 
