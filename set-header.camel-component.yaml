@@ -12,4 +12,18 @@ spec:
   definition:
     title: "Set Header"
     description: "Add or modify a header on the message using en expression in simple language (Apache Camel)."
+    required:
+      - name
     properties:
+      name:
+        title: Name of the Header
+        description: "Which header are we going to set."
+        type: string
+      simple:
+        title: Simple
+        description: "Value in simple form to set the header to."
+        type: string
+      constant:
+        title: Constant
+        description: "Constant value to set the header to."
+        type: string
