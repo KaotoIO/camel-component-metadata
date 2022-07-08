@@ -14,6 +14,7 @@ spec:
     description: "The SQL component allows you to work with databases using JDBC queries. The difference between this component and JDBC component is that in case of SQL the query is a property of the endpoint and it uses message payload as parameters passed to the query. This component uses spring-jdbc behind the scenes for the actual SQL handling."
     required:
       - query
+      - dataSource
     type: object
     properties:
       query:
@@ -22,14 +23,24 @@ spec:
         type: string
         default: ""
         path: true
+      dataSource:
+        title: DataSource
+        description: "Bean that defines the datasource with the configuration to connect to the database."
+        type: string
+        default: "#bean:{{dsBean}}"
       allowNamedParameters:
         title: Allow Named Parameters
         description: "Whether to allow using named parameters in the queries."
         type: boolean
         default: true
         x-descriptors:
-        - 'urn:alm:descriptor:com.tectonic.ui:checkbox'
-  flow:
-    from:
-      uri: "kamelet:source"
-      steps:
+        - 'urn:alm:descriptor:com.tectonic.ui:checkbox
+      outputHeader:
+        title: Output Header
+        description: "Store the query result in a header instead of the message body. By default, outputHeader == null and the query result is stored in the message body, any existing content in the message body is discarded. If outputHeader is set, the value is used as the name of the header to store the query result and the original message body is preserved."
+        type: string
+      outputType:
+        title: Output Type
+        description: "Make the output of consumer or producer to SelectList as List of Map, or SelectOne as single Java object in the following way: a) If the query has only single column, then that JDBC Column object is returned. (such as SELECT COUNT( ) FROM PROJECT will return a Long object. b) If the query has more than one column, then it will return a Map of that result. c) If the outputClass is set, then it will convert the query result into an Java bean object by calling all the setters that match the column names. It will assume your class has a default constructor to create instance with. d) If the query resulted in more than one rows, it throws an non-unique result exception. StreamList streams the result of the query using an Iterator. This can be used with the Splitter EIP in streaming mode to process the ResultSet in streaming fashion. Enum values SelectOne, SelectList, StreamList"
+        type: string
+        default: SelectList
