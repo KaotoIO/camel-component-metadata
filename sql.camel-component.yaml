@@ -33,8 +33,6 @@ spec:
         description: "Whether to allow using named parameters in the queries."
         type: boolean
         default: true
-        x-descriptors:
-        - 'urn:alm:descriptor:com.tectonic.ui:checkbox
       outputHeader:
         title: Output Header
         description: "Store the query result in a header instead of the message body. By default, outputHeader == null and the query result is stored in the message body, any existing content in the message body is discarded. If outputHeader is set, the value is used as the name of the header to store the query result and the original message body is preserved."
