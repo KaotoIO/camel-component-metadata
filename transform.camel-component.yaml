@@ -1,4 +1,3 @@
-
 apiVersion: camel.apache.org/v1alpha1
 kind: EIP
 metadata:
@@ -15,7 +14,6 @@ spec:
     description: "Transform the body of the message following the Message Translator EIP using en expression in simple language (Apache Camel)."
     properties:
       simple:
-        title: Simple
         description: Simple language content of the body to set.
         type: string
         example: 'Body: ${body}'
