@@ -7,6 +7,8 @@ metadata:
     camel.apache.org/kamelet.icon: "data:image/svg+xml;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3l4vccRosNX1V0JXq4pm3Xm+2Jx7zhVDvIJa1oGTwANreF9bhqLr2/83phgExngYJ6hYZ0g1eJiIxdjmN8j25Qk5BxkoSZlXiRnYGbVKGGozQxlHalN36XaWt9sTabX6xHHiinLmVGvbSuqjMMUbPAlsLDt6hkyMuKfc7Q04vS1Iq7103Z2tGf3Z5/4OGv48XBz+ao6OqY1u1Aybjv8IvG6/TtX7rs9U7EdvLBu4fvmz8nzQwexNJvIUOBDmE5s0WxYoeJFjNqfGAJKYObjyBDihxJsqTJkyJBoFzJsqXLlB5fypxJsyOImzhz6tzJs6fPnwkAADs="
     camel.apache.org/provider: "Kaoto Bridge"
     camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "-1"
   labels:
     camel.apache.org/kamelet.type: "action"
 spec:
