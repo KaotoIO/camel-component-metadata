@@ -14,7 +14,8 @@ metadata:
 spec:
   definition:
     title: "Marshal"
-    description: "Transforms the message body (such as Java object) into a binary or textual format, ready to be wired over the network."    required:
+    description: "Transforms the message body (such as Java object) into a binary or textual format, ready to be wired over the network."    
+    required:
       - dataformat
     type: object
     properties:
