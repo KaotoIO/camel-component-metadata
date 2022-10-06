@@ -1,0 +1,108 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: aggregate
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/svg+xml;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1UES9y7WW9IIy2W/tuw5cxeWbGojPr8iCXrJbf6vhxLsyz8XpsfHV+MgOAgS6DUHdohYkmbXIPkHt0jJVrkplkm5xAEFuLdjRcN6Qnh46il6iGiCgNKqphjyuer6unDqmwpaO2t76Rpk7DhsBguk4cxsu/rcGzxyQSQNSWfcq1s5SR2LfJZ8/EDLu8WOLp3rELgbhWrl3wn0309Uv33ez4zNHbMPqB+jeOm0B/2goGPBhA3w1wmRzGglhJYi9y+Cx+w1hPTSMofv08MkRGcCQTkSbDlUxZBCXLditf+sjioabNmzRx6twp4RIGOkCDCh1KtKjRo0iHgkjKtKnTp0p/Qp1KtarPN1izat3KtatXAAkAADs="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "0"
+    kaoto.io/maxbranches: "0"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Aggregate"
+    description: "The Aggregator from the EIP patterns allows you to combine a number of messages together into a single message."    
+    required:
+      - correlationExpression
+    type: object
+    properties:
+      correlationExpression:
+        description:  The expression used to calculate the correlation key to use for aggregation. The Exchange which has the same correlation key is aggregated together. If the correlation key could not be evaluated an Exception is thrown. You can disable this by using the ignoreBadCorrelationKeys option.
+        type: string
+      completionPredicate:
+        description: A Predicate to indicate when an aggregated exchange is complete. If this is not specified and the AggregationStrategy object implements Predicate, the aggregationStrategy object will be used as the completionPredicate.
+        type: string
+      completionTimeoutExpression:
+        description: Time in millis that an aggregated exchange should be inactive before its complete (timeout). This option can be set as either a fixed value or using an Expression which allows you to evaluate a timeout dynamically - will use Long as result. If both are set Camel will fallback to use the fixed value if the Expression result was null or 0. You cannot use this option together with completionInterval, only one of the two can be used. By default the timeout checker runs every second, you can use the completionTimeoutCheckerInterval option to configure how frequently to run the checker. The timeout is an approximation and there is no guarantee that the a timeout is triggered exactly after the timeout value. It is not recommended to use very low timeout values or checker intervals.
+        type: string
+      completionSizeExpression:
+        description: Number of messages aggregated before the aggregation is complete. This option can be set as either a fixed value or using an Expression which allows you to evaluate a size dynamically - will use Integer as result. If both are set Camel will fallback to use the fixed value if the Expression result was null or 0.
+        type: string
+      optimisticLockRetryPolicy:
+        description: Allows to configure retry settings when using optimistic locking.
+        type: string
+      parallelProcessing:
+        description: When aggregated are completed they are being send out of the aggregator. This option indicates whether or not Camel should use a thread pool with multiple threads for concurrency. If no custom thread pool has been specified then Camel creates a default pool with 10 concurrent threads.
+        type: boolean
+      optimisticLocking:
+        description: Turns on using optimistic locking, which requires the aggregationRepository being used, is supporting this by implementing org.apache.camel.spi.OptimisticLockingAggregationRepository.
+        type: string
+      executorService:
+        description: If using parallelProcessing you can specify a custom thread pool to be used. In fact also if you are not using parallelProcessing this custom thread pool is used to send out aggregated exchanges as well.
+        type: string
+      timeoutCheckerExecutorService:
+        description: If using either of the completionTimeout, completionTimeoutExpression, or completionInterval options a background thread is created to check for the completion for every aggregator. Set this option to provide a custom thread pool to be used rather than creating a new thread for every aggregator.
+        type: string
+      aggregateController:
+        description: To use a org.apache.camel.processor.aggregate.AggregateController to allow external sources to control this aggregator.
+        type: string
+      aggregationRepository:
+        description: The AggregationRepository to use. Sets the custom aggregate repository to use. Will by default use org.apache.camel.processor.aggregate.MemoryAggregationRepository.
+        type: string
+      aggregationStrategy:
+        description: The AggregationStrategy to use. For example to lookup a bean with the name foo, the value is simply just #bean:foo. Configuring an AggregationStrategy is required, and is used to merge the incoming Exchange with the existing already merged exchanges. At first call the oldExchange parameter is null. On subsequent invocations the oldExchange contains the merged exchanges and newExchange is of course the new incoming Exchange.
+        type: string
+      aggregationStrategyMethodName:
+        description: This option can be used to explicit declare the method name to use, when using beans as the AggregationStrategy.
+        type: string
+      aggregationStrategyMethodAllowNull:
+        description: If this option is false then the aggregate method is not used for the very first aggregation. If this option is true then null values is used as the oldExchange (at the very first aggregation), when using beans as the AggregationStrategy.
+        type: boolean
+      completionSize:
+        description: Number of messages aggregated before the aggregation is complete. This option can be set as either a fixed value or using an Expression which allows you to evaluate a size dynamically - will use Integer as result. If both are set Camel will fallback to use the fixed value if the Expression result was null or 0.
+        type: integer
+      completionInterval:
+        description: A repeating period in millis by which the aggregator will complete all current aggregated exchanges. Camel has a background task which is triggered every period. You cannot use this option together with completionTimeout, only one of them can be used.
+        type: string
+      completionTimeout:
+        description: Time in millis that an aggregated exchange should be inactive before its complete (timeout). This option can be set as either a fixed value or using an Expression which allows you to evaluate a timeout dynamically - will use Long as result. If both are set Camel will fallback to use the fixed value if the Expression result was null or 0. You cannot use this option together with completionInterval, only one of the two can be used. By default the timeout checker runs every second, you can use the completionTimeoutCheckerInterval option to configure how frequently to run the checker. The timeout is an approximation and there is no guarantee that the a timeout is triggered exactly after the timeout value. It is not recommended to use very low timeout values or checker intervals.
+        type: string
+      completionTimeoutCheckerInterval:
+        description: Interval in millis that is used by the background task that checks for timeouts ( org.apache.camel.TimeoutMap ). By default the timeout checker runs every second. The timeout is an approximation and there is no guarantee that the a timeout is triggered exactly after the timeout value. It is not recommended to use very low timeout values or checker intervals.
+        type: string
+        default: 1000
+      completionFromBatchConsumer:
+        description: Enables the batch completion mode where we aggregate from a org.apache.camel.BatchConsumer and aggregate the total number of exchanges the org.apache.camel.BatchConsumer has reported as total by checking the exchange property org.apache.camel.Exchange#BATCH_COMPLETE when its complete. This option cannot be used together with discardOnAggregationFailure.
+        type: boolean
+      completionOnNewCorrelationGroup:
+        description: Enables completion on all previous groups when a new incoming correlation group. This can for example be used to complete groups with same correlation keys when they are in consecutive order. Notice when this is enabled then only 1 correlation group can be in progress as when a new correlation group starts, then the previous groups is forced completed.
+        type: boolean
+      eagerCheckCompletion:
+        description: Use eager completion checking which means that the completionPredicate will use the incoming Exchange. As opposed to without eager completion checking the completionPredicate will use the aggregated Exchange.
+        type: boolean
+      ignoreInvalidCorrelationKeys:
+        description: If a correlation key cannot be successfully evaluated it will be ignored by logging a DEBUG and then just ignore the incoming Exchange.
+        type: boolean
+      closeCorrelationKeyOnCompletion:
+        description: Closes a correlation key when its complete. Any late received exchanges which has a correlation key that has been closed, it will be defined and a ClosedCorrelationKeyException is thrown.
+        type: integer
+      discardOnCompletionTimeout:
+        description: Discards the aggregated message on completion timeout. This means on timeout the aggregated message is dropped and not sent out of the aggregator.
+        type: boolean
+      discardOnAggregationFailure:
+        description: Discards the aggregated message when aggregation failed (an exception was thrown from AggregationStrategy . This means the partly aggregated message is dropped and not sent out of the aggregator. This option cannot be used together with completionFromBatchConsumer.
+        type: boolean
+      forceCompletionOnStop:
+        description: Indicates to complete all current aggregated exchanges when the context is stopped.
+        type: boolean
+      completeAllOnStop:
+        description: Indicates to wait to complete all current and partial (pending) aggregated exchanges when the context is stopped. This also means that we will wait for all pending exchanges which are stored in the aggregation repository to complete so the repository is empty before we can stop. You may want to enable this when using the memory based aggregation repository that is memory based only, and do not store data on disk. When this option is enabled, then the aggregator is waiting to complete all those exchanges before its stopped, when stopping CamelContext or the route using it.
+        type: boolean
+      description:
+        description: Sets the description of this node.
+        type: string
+      
+      
