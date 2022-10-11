@@ -4,7 +4,7 @@ kind: EIP
 metadata:
   name: aggregate
   annotations:
-    camel.apache.org/kamelet.icon: "data:image/svg+xml;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1UES9y7WW9IIy2W/tuw5cxeWbGojPr8iCXrJbf6vhxLsyz8XpsfHV+MgOAgS6DUHdohYkmbXIPkHt0jJVrkplkm5xAEFuLdjRcN6Qnh46il6iGiCgNKqphjyuer6unDqmwpaO2t76Rpk7DhsBguk4cxsu/rcGzxyQSQNSWfcq1s5SR2LfJZ8/EDLu8WOLp3rELgbhWrl3wn0309Uv33ez4zNHbMPqB+jeOm0B/2goGPBhA3w1wmRzGglhJYi9y+Cx+w1hPTSMofv08MkRGcCQTkSbDlUxZBCXLditf+sjioabNmzRx6twp4RIGOkCDCh1KtKjRo0iHgkjKtKnTp0p/Qp1KtarPN1izat3KtatXAAkAADs="
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1UES9y7WW9IIy2W/tuw5cxeWbGojPr8iCXrJbf6vhxLsyz8XpsfHV+MgOAgS6DUHdohYkmbXIPkHt0jJVrkplkm5xAEFuLdjRcN6Qnh46il6iGiCgNKqphjyuer6unDqmwpaO2t76Rpk7DhsBguk4cxsu/rcGzxyQSQNSWfcq1s5SR2LfJZ8/EDLu8WOLp3rELgbhWrl3wn0309Uv33ez4zNHbMPqB+jeOm0B/2goGPBhA3w1wmRzGglhJYi9y+Cx+w1hPTSMofv08MkRGcCQTkSbDlUxZBCXLditf+sjioabNmzRx6twp4RIGOkCDCh1KtKjRo0iHgkjKtKnTp0p/Qp1KtarPN1izat3KtatXAAkAADs="
     camel.apache.org/provider: "Kaoto Bridge"
     camel.apache.org/kamelet.group: "Knative"
     kaoto.io/minbranches: "0"
