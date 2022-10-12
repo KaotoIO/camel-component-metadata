@@ -19,3 +19,8 @@ spec:
         description: Simple language content of the body to set.
         type: string
         example: 'Body: ${body}'
+      constant:
+        title: Constant 
+        description: String constant.
+        type: string
+        example: 'Hello Kaoto!'
