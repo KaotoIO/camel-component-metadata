@@ -1,0 +1,45 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: claim-check
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif+xml;base64,R0lGODlhVgA2ANUAAP///9D+o8z/mdH3q8/yrcnjrtfUz8DXqMjFwLbIo7q3s7S7qbi2srK3qbCyqKm3m7GuqqyqpailoqakoKKgnJihjpmZmZGPi4+NiomHhIiGg3p4dXl3dXRycGZmZllZWFVVVUtLS0JCQjo6OAoKCgAAAP4BAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUACYALAAAAABWADYAAAb/wJJwSCwaj8ikcskkAp6ApnRKrR6h0ZJgy+16v+CweEwuC7HCsnrNboeFmnjWTa/bu3B5+s7vk/Mac36DhFuAgoWJd4d7io5ujFqPk2uRlJd/JXGBjZieeJp6kp+kApalpKeonqqrl62uk7BjVbFcs2IlWLu8o7G4b7zCT76uwGC6w722hqGcxbTKy8zHX8nSUNCDSdbOiGbYaI/X4l7V5uHZdp3o06Cb33/pxOtDyMLQ53jzUc1WRO125fPGLto8bWqO7HN3iyDCewfr2QtY7p0oNuSwPcyEMCM9cw4x8tu4CEk3eAVzjWRmKmSlldRcJqTiKIBNm5lQkmTp5QCIyRAhKuS8yFNNggUXMmRwkMBm0wFNG+osqobEBgNYFXwgQCADgQIZBgRoNpXqnw5Y03rwYOADh7YHyBI1m6sDghEWsEaIYGACBAMSGjxoWZbuG7t49VpYvJiCYMJzDVtDm9aABxGYMYeIC/mZ5DAk3mJlsPWmabmeP385iiEO07FvZKru4hOoUFqyZ28xDTtXbt1t9AGPXXh4cIf/kitPrnO58+dL4EHZRL269evYs2vfzv06lu7gw4sf7306+fPo00vnx769+/dBAAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Claim Check"
+    description: "The Claim Check from the EIP patterns allows you to replace message content with a claim check (a unique key), which can be used to retrieve the message content at a later time."
+    required:
+      - operation
+    type: object
+    properties:
+      operation:
+        title: Operation 
+        description: The claim check operation to use. The following operations are supported: Get - Gets (does not remove) the claim check by the given key. GetAndRemove - Gets and removes the claim check by the given key. Set - Sets a new (will override if key already exists) claim check with the given key. Push - Sets a new claim check on the stack (does not use key). Pop - Gets the latest claim check from the stack (does not use key).
+        type: string
+        example: 'Get'
+      key:
+        title: Key
+        description: To use a specific key for claim check id (for dynamic keys use simple language syntax as the key).
+        type: string
+      filter:
+        title: Filter
+        description: Specify a filter to control what data gets merged data back from the claim check repository. The following syntax is supported: body - to aggregate the message body attachments - to aggregate all the message attachments headers - to aggregate all the message headers header:pattern - to aggregate all the message headers that matches the pattern. The following pattern rules are applied in this order: exact match, returns true wildcard match (pattern ends with a and the name starts with the pattern), returns true regular expression match, returns true otherwise returns false You can specify multiple rules separated by comma. For example, the following includes the message body and all headers starting with foo: body,header:foo. The syntax supports the following prefixes which can be used to specify include,exclude, or remove - to include (which is the default mode) - - to exclude (exclude takes precedence over include) — - to remove (remove takes precedence) For example to exclude a header name foo, and remove all headers starting with bar, -header:foo,--headers:bar Note you cannot have both include and exclude header:pattern at the same time.
+        type: string
+        example: "header:(foo|bar)"
+      aggregationStrategy:
+        title: Aggregation Strategy
+        description: To use a custom AggregationStrategy instead of the default implementation. Notice you cannot use both custom aggregation strategy and configure data at the same time.
+        type: string
+      aggregationStrategyMethodName:
+        title: Aggregation Strategy Method Name
+        description: This option can be used to explicit declare the method name to use, when using POJOs as the AggregationStrategy.
+        type: string
+      description:
+        title: Marker
+        description: Sets the description of this node.
+        type: string
