@@ -1,0 +1,40 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: claim-check
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif+xml;base64,R0lGODlhVgA2ANUAAP///9D+o8z/mdH3q8/yrcnjrtfUz8DXqMjFwLbIo7q3s7S7qbi2srK3qbCyqKm3m7GuqqyqpailoqakoKKgnJihjpmZmZGPi4+NiomHhIiGg3p4dXl3dXRycGZmZllZWFVVVUtLS0JCQjo6OAoKCgAAAP4BAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUACYALAAAAABWADYAAAb/wJJwSCwaj8ikcskkAp6ApnRKrR6h0ZJgy+16v+CweEwuC7HCsnrNboeFmnjWTa/bu3B5+s7vk/Mac36DhFuAgoWJd4d7io5ujFqPk2uRlJd/JXGBjZieeJp6kp+kApalpKeonqqrl62uk7BjVbFcs2IlWLu8o7G4b7zCT76uwGC6w722hqGcxbTKy8zHX8nSUNCDSdbOiGbYaI/X4l7V5uHZdp3o06Cb33/pxOtDyMLQ53jzUc1WRO125fPGLto8bWqO7HN3iyDCewfr2QtY7p0oNuSwPcyEMCM9cw4x8tu4CEk3eAVzjWRmKmSlldRcJqTiKIBNm5lQkmTp5QCIyRAhKuS8yFNNggUXMmRwkMBm0wFNG+osqobEBgNYFXwgQCADgQIZBgRoNpXqnw5Y03rwYOADh7YHyBI1m6sDghEWsEaIYGACBAMSGjxoWZbuG7t49VpYvJiCYMJzDVtDm9aABxGYMYeIC/mZ5DAk3mJlsPWmabmeP385iiEO07FvZKru4hOoUFqyZ28xDTtXbt1t9AGPXXh4cIf/kitPrnO58+dL4EHZRL269evYs2vfzv06lu7gw4sf7306+fPo00vnx769+/dBAAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Delay"
+    description: "The Claim Check from the EIP patterns allows you to replace message content with a claim check (a unique key), which can be used to retrieve the message content at a later time."
+    required:
+      - expression
+    type: object
+    properties:
+      expression:
+        title: Expression 
+        description: "Expression to define how long time to wait (in millis)."
+        type: string
+        example: '${body}'
+      asyncDelayed:
+        title: Async Delayed
+        description: "Enables asynchronous delay which means the thread will not block while delaying."
+        type: boolean
+      callerRunsWhenRejected:
+        title: Caller Runs When Rejected
+        description: "Whether or not the caller should run the task when it was rejected by the thread pool. Is by default true."
+        type: boolean
+      executorService:
+        title: Executor Service
+        description: "To use a custom Thread Pool if asyncDelay has been enabled."
+        type: object
+      description:
+        title: Description
+        description: "Sets the description of this node."
+        type: object
