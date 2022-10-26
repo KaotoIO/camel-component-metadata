@@ -20,7 +20,7 @@ spec:
       expression:
         title: Expression 
         description: "Expression to define how long time to wait (in millis)."
-        type: string
+        type: object
         example: '${body}'
       asyncDelayed:
         title: Async Delayed
