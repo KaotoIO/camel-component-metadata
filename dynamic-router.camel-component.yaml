@@ -1,0 +1,37 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: dynamic-router
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AMQAAP///8z/md/f37nni8PDw6zXgbW1tZm/c4yvaZmZmYSEhHKPVmZ/TEBAQCYwHQAAAP4BAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAX/ICCO42OeaKqubOu+ZCzHZmDfeK7vfO/vJoOBMCuKar+kcvkzKZ7GIpJJrSad0Khsau3aCo5CFavQbh/eNNgkZpLNNHS663idGLk3vCSfUxF1JgsHhIWGbTd6ewBcfj+ADQUIDwtjD09li4x9jj2QiANWinuNnTifjqNwpaaonapmrH6uprBasl60pgG2UbhVn0+7iZdZRURxjq7Cw7zFmSLII0/Sm3O6zcSYJNTTmMi/OgUNDw4LDpFWYIhLo5gKCQnv1OE5gSYHPMw7aw/sVwwwxYs3r+ATcjkY2DmRb8c+Hfde4MHxzOATAQLmGbCGo4ChjwcihrIySRDIQ3kc/2DCiPGdCEwbj3BKUpJSmkmVqLh7ElNBTD5VPP7L8XDHSJ3PuP2UMrNT0VdJNdXL5qWXkalURUVdhJXK01RbSTV19NWPVaZZs52d0TVtu7Crxvop+yWMpW1S5c6h22+oj7Vn3O6I6GKiNmNiBeuoOegkoX+AkzWjGwDnXcRxs1EOcNQN3Fh6FV+GJpaB6dOoU6tezbq169WRSSycneIJ7duftTjY3aC379/AgwtvcHC48eO/8WoCYMCi8+fQo0tXrqn59OvYs1Nfzt1IRgUCuosfT976UvLo0xf5flG9+/cirPOET588+5X18y+XD1O/f02Y/SdgFAEOaGAMBR6oYAuCChrIYIMCPuhfCAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Dynamic Router"
+    description: "The Dynamic Router from the EIP patterns allows you to route messages while avoiding the dependency of the router on all possible destinations while maintaining its efficiency."
+    required:
+      - expression
+    properties:
+      expression:
+        title: "Expression"
+        description: "Expression to call that returns the endpoint(s) to route to in the dynamic routing. Important: The expression will be called in a while loop fashion, until the expression returns null which means the dynamic router is finished."
+        type: object
+      uriDelimiter:
+        title: URI Delimiter
+        description: "Sets the uri delimiter to use."
+        type: string
+      ignoreInvalidEndpoints:
+        title: "Ignore Invalid Endpoints"
+        description: "Ignore the invalidate endpoint exception when try to create a producer with that endpoint."
+        type: boolean
+      cacheSize:
+        title: "Cache Size"
+        description: " 	Sets the maximum size used by the org.apache.camel.spi.ProducerCache which is used to cache and reuse producers when using this dynamic router, when uris are reused. Beware that when using dynamic endpoints then it affects how well the cache can be utilized. If each dynamic endpoint is unique then its best to turn of caching by setting this to -1, which allows Camel to not cache both the producers and endpoints; they are regarded as prototype scoped and will be stopped and discarded after use. This reduces memory usage as otherwise producers/endpoints are stored in memory in the caches. However if there are a high degree of dynamic endpoints that have been used before, then it can benefit to use the cache to reuse both producers and endpoints and therefore the cache size can be set accordingly or rely on the default size (1000). If there is a mix of unique and used before dynamic endpoints, then setting a reasonable cache size can help reduce memory usage to avoid storing too many non frequent used producers."
+        type: integer
+      description:
+        title: Description
+        description: "Sets the description of this node."
+        type: object
