@@ -1,0 +1,44 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: loop
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1U0bUX4WW3XBBGW/uCseILmWY+s9MZ7yCXrLplA/h61r679HJ0UH5HgFhzQnuEN4ZliHWKiyddh4J2kmd9mGCam1edeBAqC0eilYlhaZFODKONbI+Db6qjD5OvfLGXfLhAlE69LrqrhbQkHcDGjpbEK3nKk78Bz2LNN8Op1bUOt9C5zNkw26Qo1OKnkFym5eTXtuiyW7uc2J6Z9fby+PnH67Dg/IAEKwUwYDJt8ObZMzcmECqDB88tewiRoRqH6SBOG+hsUl9Ai3ESWpMk7RtFjUtAofShciXGeC7VFYw5xSPNlx5y6tzJgBnPn0AnCMJAp6jRo0iTKl3KtClSEE6jSp1K9SnRqlizah0Kp6vXr2DDih0LIAEAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Loop"
+    description: "The Loop EIP allows for processing a message a number of times, possibly in a different way for each iteration."
+    required:
+      - expression
+    properties:
+      expression:
+        title: Expression
+        description: "Expression to define how many times we should loop. Notice the expression is only evaluated once, and should return a number as how many times to loop. A value of zero or negative means no looping. The loop is like a for-loop fashion, if you want a while loop, then the dynamic router may be a better choice."
+        type: object
+      copy:
+        title: Copy
+        description: "If the copy attribute is true, a copy of the input Exchange is used for each iteration. That means each iteration will start from a copy of the same message. By default loop will loop the same exchange all over, so each iteration may have different message content."
+        type: boolean
+      doWhile:
+        title: "Do While"
+        description: "Enables the while loop that loops until the predicate evaluates to false or null."
+        type: boolean
+      breakOnShutdown:
+        title: "Break on Shutdown"
+        description: "If the breakOnShutdown attribute is true, then the loop will not iterate until it reaches the end when Camel is shut down."
+        type: boolean
+      disabled:
+        title: "Disabled"
+        description: "Whether to disable this EIP from the route during build time. Once an EIP has been disabled then it cannot be enabled later at runtime.Whether to disable this EIP from the route during build time. Once an EIP has been disabled then it cannot be enabled later at runtime."
+        type: boolean
+      description:
+        title: "Description"
+        description: "Sets the description of this node."
+        type: object
