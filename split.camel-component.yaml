@@ -1,0 +1,73 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: split
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1U0bUX4WW3XBBGW/uCseILmWY+s9MZ7yCXrLplA/h61r679HJ0UH5HgFhzQnuEN4ZliHWKiyddh4J2kmd9mGCam1edeBAqC0eilYlhaZFODKONbI+Db6qjD5OvfLGXfLhAlE69LrqrhbQkHcDGjpbEK3nKk78Bz2LNN8Op1bUOt9C5zNkw26Qo1OKnkFym5eTXtuiyW7uc2J6Z9fby+PnH67Dg/IAEKwUwYDJt8ObZMzcmECqDB88tewiRoRqH6SBOG+hsUl9Ai3ESWpMk7RtFjUtAofShciXGeC7VFYw5xSPNlx5y6tzJgBnPn0AnCMJAp6jRo0iTKl3KtClSEE6jSp1K9SnRqlizah0Kp6vXr2DDih0LIAEAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Split"
+    description: "Use a Splitter to break out the composite message into a series of individual messages, each containing data related to one item."
+    properties:
+      expression:
+        title: Expression
+        description: "Expression of how to split the message body, such as as-is, using a tokenizer, or using a xpath."
+        type: object
+      delimiter:
+        title: Delimiter
+        description: "Delimiter used in splitting messages. Can be turned off using the value false. The default value is ','."
+        type: string
+      aggregationStrategy:
+        title: Aggregation Strategy
+        description: "Sets a reference to the AggregationStrategy to be used to assemble the replies from the split messages, into a single outgoing message from the Splitter. By default Camel will use the original incoming message to the splitter (leave it unchanged). You can also use a POJO as the AggregationStrategy."
+        type: object
+      aggregationStrategyMethodName:
+        title: Aggregation Strategy Method Name
+        description: "This option can be used to explicit declare the method name to use, when using POJOs as the AggregationStrategy."
+        type: string
+      aggregationStrategyMethodAllowNull:
+        title: Aggregation Strategy Method Allow Null
+        description: "If this option is false then the aggregate method is not used if there was no data to enrich. If this option is true then null values is used as the oldExchange (when no data to enrich), when using POJOs as the AggregationStrategy."
+        type: boolean
+      parallelAggregate:
+        title: Parallel Aggregate
+        description: "If enabled then the aggregate method on AggregationStrategy can be called concurrently. Notice that this would require the implementation of AggregationStrategy to be implemented as thread-safe. By default this is false meaning that Camel synchronizes the call to the aggregate method. Though in some use-cases this can be used to archive higher performance when the AggregationStrategy is implemented as thread-safe."
+        type: boolean
+      parallelProcessing:
+        title: Parallel Processing
+        description: "If enabled then processing each split messages occurs concurrently. Note the caller thread will still wait until all messages has been fully processed, before it continues. It’s only processing the sub messages from the splitter which happens concurrently."
+        type: boolean
+      streaming:
+        title: Streaming
+        description: "When in streaming mode, then the splitter splits the original message on-demand, and each split message is processed one by one. This reduces memory usage as the splitter do not split all the messages first, but then we do not know the total size, and therefore the org.apache.camel.Exchange#SPLIT_SIZE is empty. In non-streaming mode (default) the splitter will split each message first, to know the total size, and then process each message one by one. This requires to keep all the split messages in memory and therefore requires more memory. The total size is provided in the org.apache.camel.Exchange#SPLIT_SIZE header. The streaming mode also affects the aggregation behavior. If enabled then Camel will process replies out-of-order, e.g. in the order they come back. If disabled, Camel will process replies in the same order as the messages was split."
+        type: boolean
+      stopOnException:
+        title: Stop On Exception
+        description: "Will now stop further processing if an exception or failure occurred during processing of an org.apache.camel.Exchange and the caused exception will be thrown. Will also stop if processing the exchange failed (has a fault message) or an exception was thrown and handled by the error handler (such as using onException). In all situations the splitter will stop further processing. This is the same behavior as in pipeline, which is used by the routing engine. The default behavior is to not stop but continue processing till the end."
+        type: boolean
+      timeout:
+        title: Timeout
+        description: "Sets a total timeout specified in millis, when using parallel processing. If the Splitter hasn’t been able to split and process all the sub messages within the given timeframe, then the timeout triggers and the Splitter breaks out and continues. Notice if you provide a TimeoutAwareAggregationStrategy then the timeout method is invoked before breaking out. If the timeout is reached with running tasks still remaining, certain tasks for which it is difficult for Camel to shut down in a graceful manner may continue to run. So use this option with a bit of care."
+        type: string
+      executorService:
+        title: Executor Service
+        description: "To use a custom Thread Pool to be used for parallel processing. Notice if you set this option, then parallel processing is automatically implied, and you do not have to enable that option as well."
+        type: object
+      onPrepare:
+        title: On Prepare
+        description: "Uses the Processor when preparing the org.apache.camel.Exchange to be sent. This can be used to deep-clone messages that should be sent, or any custom logic needed before the exchange is sent."
+        type: object
+      shareUnitOfWork:
+        title: Share Unit of Work
+        description: "Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub messages. Splitter will by default not share unit of work between the parent exchange and each split exchange. This means each split exchange has its own individual unit of work."
+        type: boolean
+      description:
+        title: Description
+        description: "Sets the description of this node."
+        type: object
