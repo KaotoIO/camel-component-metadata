@@ -79,6 +79,10 @@ spec:
         title: "Constant"
         description: "Constant expression."
         type: string
+      tokenize:
+        title: "Tokenize"
+        description: "Tokenize object."
+        type: object
       token:
         title: "Token"
         description: "The (start) token to use as tokenizer, for example you can use the new line token. You can use simple language as the token to support dynamic tokens."
