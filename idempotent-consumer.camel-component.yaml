@@ -1,0 +1,48 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: idempotent-consumer
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhUgAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABQAC8AggAAAAAAAICAgMz/mf///wECAwECAwECAwP/SLrc/jDKSau9OGsYuv9gKI5k+W2Kqa4siRLdIM90bd94rndvrP/AIK4jEGx8wqRyGCgeA8uodEA0apDT7K/61Hp3TWsG+y3LuFeoeU0Nd9lm9FgN/8ox5Pr0fsmXW358Fn52fTeCFYQ2AkoBhjaIFIo1RYxBjoOHbmlClUVAmImaTpxBnpU7jzWRE5M0p55DqjSsEq4zsKeQszN3ub/AwcG0vGebCsLJyrmrxW2kc53Ah861EbcyvzmhkqNieHQ/sFvVx+DSn6Dl0Oemlpfr333ha9yt3m9wgPTG7PN6dsz9A6jFGgd+BBsJHIQwoRCDD7A5xFdq4hKIDiRapLUwLlHDjds6SvoIkmK0kg9FtiKJkqM/hvtiyvTw0uPMm4BqXljGs6eyFwR8Ch3qKQEAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Idempotent Consumer"
+    description: "The Idempotent Consumer from the EIP patterns is used to filter out duplicate messages. The Idempotent Consumer essentially acts like a Message Filter to filter out duplicates."
+    required:
+      - expression
+    properties:
+      expression:
+        title: Expression
+        description: "Expression used to calculate the correlation key to use for duplicate check. The Exchange which has the same correlation key is regarded as a duplicate and will be rejected."
+        type: object
+      idempotentRepository:
+        title: Idempotent Repository
+        description: "Sets the reference name of the message id repository."
+        type: object
+      eager:
+        title: Eager
+        description: "Sets whether to eagerly add the key to the idempotent repository or wait until the exchange is complete. Eager is default enabled."
+        type: boolean
+      completionEager:
+        title: Completion Eager
+        description: "Sets whether to complete the idempotent consumer eager or when the exchange is done. If this option is true to complete eager, then the idempotent consumer will trigger its completion when the exchange reached the end of the block of the idempotent consumer pattern. So if the exchange is continued routed after the block ends, then whatever happens there does not affect the state. If this option is false (default) to not complete eager, then the idempotent consumer will complete when the exchange is done being routed. So if the exchange is continued routed after the block ends, then whatever happens there also affect the state. For example if the exchange failed due to an exception, then the state of the idempotent consumer will be a rollback."
+        type: boolean
+      skipDuplicate:
+        title: Skip Duplicate
+        description: "Sets whether to skip duplicates or not. The default behavior is to skip duplicates. A duplicate message would have the Exchange property org.apache.camel.Exchange#DUPLICATE_MESSAGE set to a Boolean#TRUE value. A none duplicate message will not have this property set."
+        type: boolean
+      removeOnFailure:
+        title: Remove on Failure
+        description: "Sets whether to remove or keep the key on failure. The default behavior is to remove the key on failure."
+        type: boolean
+      description:
+        title: Description
+        description: "Sets the description of this node."
+        type: object
