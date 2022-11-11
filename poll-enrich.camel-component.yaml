@@ -1,0 +1,53 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: poll-enrich
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1U0XU7y3K/x0EuWQWbgWKh9swOeNvsN9wsn3/r9i0+j96o9nxOIIOEayeAgQOEixeGJoh8ioyFf2lkjoGCk4OYJJCeEFeSmxidTpZQf4umRaOkGZVjqTerRGWer6Wxai61U7duuY27l72UoB4LQMKwN6jAh74+DrjCrJ+anLbKy9bEsyiuur/hzNfPrMjUVuKb57LQiebf8ZHzzvDpdh30+pm/+f6JQieQHcGCUbAhxHJw4RKFDrs0jLgtIMVWEy/2gKixOV9HgLw+bswoUmK+ZChTojypsqVLCbIwjJlJs6bNmzhz6txpEwTPn0CDCu0pc6jRo0hjMlvKtKnTBAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Poll Content Enricher"
+    description: "Content Enricher from the EIP patterns."
+    required:
+      - expression
+    properties:
+      expression:
+        title: "Expression"
+        description: "Expression that computes the endpoint uri to use as the resource endpoint to enrich from."
+        type: object
+      aggregationStrategy:
+        title: URI Delimiter
+        description: "Sets the AggregationStrategy to be used to merge the reply from the external service, into a single outgoing message. By default Camel will use the reply from the external service as outgoing message ."
+        type: object
+      aggregationStrategyMethodName:
+        title: "Aggregation Strategy Method Name"
+        description: "This option can be used to explicit declare the method name to use, when using POJOs as the AggregationStrategy."
+        type: string
+      aggregationStrategyMethodAllowNull:
+        title: "Aggregation Strategy Method Allow Null"
+        description: "If this option is false then the aggregate method is not used if there was no data to enrich. If this option is true then null values is used as the oldExchange (when no data to enrich), when using POJOs as the AggregationStrategy."
+        type: boolean
+      aggregateOnException:
+        title: "Aggregation On Exception"
+        description: "If this option is false then the aggregate method is not used if there was an exception thrown while trying to retrieve the data to enrich from the resource. Setting this option to true allows end users to control what to do if there was an exception in the aggregate method. For example to suppress the exception or set a custom message body etc."
+        type: boolean
+      timeout:
+        title: "Timeout"
+        description: "Timeout in millis when polling from the external service. The timeout has influence about the poll enrich behavior. It basically operations in three different modes: negative value - Waits until a message is available and then returns it. Warning that this method could block indefinitely if no messages are available. 0 - Attempts to receive a message exchange immediately without waiting and returning null if a message exchange is not available yet. positive value - Attempts to receive a message exchange, waiting up to the given timeout to expire if a message is not yet available. Returns null if timed out The default value is -1 and therefore the method could block indefinitely, and therefore its recommended to use a timeout value."
+        type: string
+      cacheSize:
+        title: "Cache Size"
+        description: "Sets the maximum size used by the org.apache.camel.spi.ProducerCache which is used to cache and reuse producers when using this dynamic router, when uris are reused. Beware that when using dynamic endpoints then it affects how well the cache can be utilized. If each dynamic endpoint is unique then its best to turn of caching by setting this to -1, which allows Camel to not cache both the producers and endpoints; they are regarded as prototype scoped and will be stopped and discarded after use. This reduces memory usage as otherwise producers/endpoints are stored in memory in the caches. However if there are a high degree of dynamic endpoints that have been used before, then it can benefit to use the cache to reuse both producers and endpoints and therefore the cache size can be set accordingly or rely on the default size (1000). If there is a mix of unique and used before dynamic endpoints, then setting a reasonable cache size can help reduce memory usage to avoid storing too many non frequent used producers."
+        type: integer
+      ignoreInvalidEndpoint:
+        title: "Ignore Invalid Endpoint"
+        description: "Ignore the invalidate endpoint exception when try to create a producer with that endpoint."
+        type: boolean
+      description:
+        title: Description
+        description: "Sets the description of this node."
+        type: object
