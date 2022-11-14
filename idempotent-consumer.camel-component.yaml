@@ -46,3 +46,13 @@ spec:
         title: Description
         description: "Sets the description of this node."
         type: object
+      simple:
+        title: Simple 
+        description: Simple language expression
+        type: string
+        example: '${body} > 3'
+      constant:
+        title: Constant 
+        description: String constant as expression.
+        type: string
+        example: 'Hello Kaoto!'
