@@ -16,8 +16,8 @@ spec:
       - ref
     type: object
     properties:
-      type:
+      ref:
         title: Reference 
-        description: "The java type to convert to."
+        description: "Reference of the process object (Java)."
         type: string
         example: '#class:com.foo.MyProcessor'
