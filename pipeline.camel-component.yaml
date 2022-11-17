@@ -1,0 +1,17 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: pipeline
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2ALMAAOfn58z/md/f38zMzL+/v7i4uKenp5mZmYyMjISEhGZmZkBAQDNAJgAAAP///wAAACH5BAUUAA4ALAAAAABWADYAAAT/0MlJq7046827/2AojmRpnmiqrmzrvnAsz3Rt33iu73zv/8CgcEjcNI7IpHKp9DCf0CMpSm12qtjGtBHoer/gcOAoEACMXLE6TDaHjuu495hIGNByOd3+TufVe3cacH+ADXWCH4SFbId8g36MX4F9ko2IeJaTjokVCAMXi5pjnBOfFqKalBd1pxSplqsOraATsJKyDmVldbS2kaqOB7u9Ca63jA0LrQTNBMXQxqDIhXvRxZ/Uf47RBt4G0QVn2nl7CN/hAOR6y8bOBBTF4r+jc6US8mcO63G58QnzXgGLdW8WQH0S+K3xNyFgBYWGMElwSK8eKYmKBuIqiAGiGIaZdOqBFGjx4qOMJUdWFMnxisZkLVG9rBYTDYObOHPq3MlAZcIGPIPy9BkqCxWMHY1GQdqhmQEFUKNKnUoVKlMLTqtq1Xq1g4BrYMOe1PBVrNlenT6UPWs2LYa1bMO6LUK3rt27ePPq3cu3r9+/gAMLHky4MIoIADs="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Pipeline"
+    description: "In many enterprise integration scenarios, a single event triggers a sequence of processing steps, each performing a specific function. For example, let's assume a new order arrives in our enterprise in the form of a message. One requirement may be that the message is encrypted to prevent eavesdroppers from spying on a customer's order. A second requirement is that the messages contain authentication information in the form of a digital certificate to ensure that orders are placed only by trusted customers. In addition, duplicate messages could be sent from external parties (remember all the warnings on the popular shopping sites to click the 'Order Now' button only once?). To avoid duplicate shipments and unhappy customers, we need to eliminate duplicate messages before subsequent order processing steps are initiated. To meet these requirements, we need to transform a stream of possibly duplicated, encrypted messages containing extra authentication data into a stream of unique, simple plain-text order messages without the extraneous data fields. "
+    properties:
