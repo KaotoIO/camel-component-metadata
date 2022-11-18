@@ -20,5 +20,5 @@ spec:
     properties:
       properties:
         description: Properties of the load balancer.
-        type: array
+        type: object
         example: 'library=Gson'
