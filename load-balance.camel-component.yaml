@@ -1,0 +1,24 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: load-balance
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AMQAAP///8z/md/f37nni8PDw6zXgbW1tZm/c4yvaZmZmYSEhHKPVmZ/TEBAQCYwHQAAAP4BAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAX/ICCO42OeaKqubOu+ZCzHZmDfeK7vfO/vJoOBMCuKar+kcvkzKZ7GIpJJrSad0Khsau3aCo5CFavQbh/eNNgkZpLNNHS663idGLk3vCSfUxF1JgsHhIWGbTd6ewBcfj+ADQUIDwtjD09li4x9jj2QiANWinuNnTifjqNwpaaonapmrH6uprBasl60pgG2UbhVn0+7iZdZRURxjq7Cw7zFmSLII0/Sm3O6zcSYJNTTmMi/OgUNDw4LDpFWYIhLo5gKCQnv1OE5gSYHPMw7aw/sVwwwxYs3r+ATcjkY2DmRb8c+Hfde4MHxzOATAQLmGbCGo4ChjwcihrIySRDIQ3kc/2DCiPGdCEwbj3BKUpJSmkmVqLh7ElNBTD5VPP7L8XDHSJ3PuP2UMrNT0VdJNdXL5qWXkalURUVdhJXK01RbSTV19NWPVaZZs52d0TVtu7Crxvop+yWMpW1S5c6h22+oj7Vn3O6I6GKiNmNiBeuoOegkoX+AkzWjGwDnXcRxs1EOcNQN3Fh6FV+GJpaB6dOoU6tezbq169WRSSycneIJ7duftTjY3aC379/AgwtvcHC48eO/8WoCYMCi8+fQo0tXrqn59OvYs1Nfzt1IRgUCuosfT976UvLo0xf5flG9+/cirPOET588+5X18y+XD1O/f02Y/SdgFAEOaGAMBR6oYAuCChrIYIMCPuhfCAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "-1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Load Balance"
+    description: "The Load Balancer Pattern allows you to delegate to one of a number of endpoints using a variety of different load balancing policies."
+    required:
+    type: object
+    properties:
+      properties:
+        description: Properties of the load balancer.
+        type: array
+        example: 'library=Gson'
