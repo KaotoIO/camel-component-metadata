@@ -1,0 +1,81 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: recipient-list
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1U0XU7y3K/x0EuWQWbgWKh9swOeNvsN9wsn3/r9i0+j96o9nxOIIOEayeAgQOEixeGJoh8ioyFf2lkjoGCk4OYJJCeEFeSmxidTpZQf4umRaOkGZVjqTerRGWer6Wxai61U7duuY27l72UoB4LQMKwN6jAh74+DrjCrJ+anLbKy9bEsyiuur/hzNfPrMjUVuKb57LQiebf8ZHzzvDpdh30+pm/+f6JQieQHcGCUbAhxHJw4RKFDrs0jLgtIMVWEy/2gKixOV9HgLw+bswoUmK+ZChTojypsqVLCbIwjJlJs6bNmzhz6txpEwTPn0CDCu0pc6jRo0hjMlvKtKnTBAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Recipient List"
+    description: "Define a channel for each recipient. Then use a Recipient List to inspect an incoming message, determine the list of desired recipients, and forward the message to all channels associated with the recipients in the list."
+    required:
+      - expression
+    properties:
+      expression:
+        title: "Expression"
+        description: "Expression that returns which endpoints (url) to send the message to (the recipients). If the expression return an empty value then the message is not sent to any recipients."
+        type: object
+      delimiter:
+        title: Delimiter
+        description: "Delimiter used if the Expression returned multiple endpoints. Can be turned off using the value false. The default value is ,."
+        type: string
+      parallelProcessing:
+        title: "Parallel Processing"
+        description: "If enabled then sending messages to the recipients occurs concurrently. Note the caller thread will still wait until all messages has been fully processed, before it continues. Its only the sending and processing the replies from the recipients which happens concurrently."
+        type: boolean
+      strategyRef:
+        title: "Strategy"
+        description: "Sets a reference to the AggregationStrategy to be used to assemble the replies from the recipients, into a single outgoing message from the RecipientList. By default Camel will use the last reply as the outgoing message. You can also use a POJO as the AggregationStrategy."
+        type: string
+      strategyMethodName:
+        title: "Strategy Method Name"
+        description: "This option can be used to explicit declare the method name to use, when using POJOs as the AggregationStrategy."
+        type: string
+      strategyMethodAllowNull:
+        title: "Strategy Method Allow Null"
+        description: "If this option is false then the aggregate method is not used if there was no data to enrich. If this option is true then null values is used as the oldExchange (when no data to enrich), when using POJOs as the AggregationStrategy."
+        type: boolean
+      executorServiceRef:
+        title: "Executor Service"
+        description: "Refers to a custom Thread Pool to be used for parallel processing. Notice if you set this option, then parallel processing is automatic implied, and you do not have to enable that option as well."
+        type: string
+      stopOnException:
+        title: "Stop on Exception"
+        description: "Will now stop further processing if an exception or failure occurred during processing of an org.apache.camel.Exchange and the caused exception will be thrown. Will also stop if processing the exchange failed (has a fault message) or an exception was thrown and handled by the error handler (such as using onException). In all situations the recipient list will stop further processing. This is the same behavior as in pipeline, which is used by the routing engine. The default behavior is to not stop but continue processing till the end."
+        type: boolean
+      ignoreInvalidEndpoints:
+        title: "Ignore Invalid Endpoints"
+        description: "Ignore the invalidate endpoint exception when try to create a producer with that endpoint."
+        type: boolean
+      streaming:
+        title: "Streaming"
+        description: "If enabled then Camel will process replies out-of-order, eg in the order they come back. If disabled, Camel will process replies in the same order as defined by the recipient list."
+        type: boolean
+      timeout:
+        title: "Timeout"
+        description: "Sets a total timeout specified in millis, when using parallel processing. If the Recipient List hasn’t been able to send and process all replies within the given timeframe, then the timeout triggers and the Recipient List breaks out and continues. Notice if you provide a TimeoutAwareAggregationStrategy then the timeout method is invoked before breaking out. If the timeout is reached with running tasks still remaining, certain tasks for which it is difficult for Camel to shut down in a graceful manner may continue to run. So use this option with a bit of care."
+        type: string
+      onPrepareRef:
+        title: "On Prepare"
+        description: "Uses the Processor when preparing the org.apache.camel.Exchange to be send. This can be used to deep-clone messages that should be send, or any custom logic needed before the exchange is send."
+        type: string
+      shareUnitOfWork:
+        title: "Share Unit of Work"
+        description: "Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub messages. Recipient List will by default not share unit of work between the parent exchange and each recipient exchange. This means each sub exchange has its own individual unit of work."
+        type: boolean
+      cacheSize:
+        title: "Cache Size"
+        description: "Sets the maximum size used by the org.apache.camel.spi.ProducerCache which is used to cache and reuse producers when using this recipient list, when uris are reused. Beware that when using dynamic endpoints then it affects how well the cache can be utilized. If each dynamic endpoint is unique then its best to turn of caching by setting this to -1, which allows Camel to not cache both the producers and endpoints; they are regarded as prototype scoped and will be stopped and discarded after use. This reduces memory usage as otherwise producers/endpoints are stored in memory in the caches. However if there are a high degree of dynamic endpoints that have been used before, then it can benefit to use the cache to reuse both producers and endpoints and therefore the cache size can be set accordingly or rely on the default size (1000). If there is a mix of unique and used before dynamic endpoints, then setting a reasonable cache size can help reduce memory usage to avoid storing too many non frequent used producers."
+        type: integer
+      parallelAggregate:
+        title: "Parallel Aggregate"
+        description: "If enabled then the aggregate method on AggregationStrategy can be called concurrently. Notice that this would require the implementation of AggregationStrategy to be implemented as thread-safe. By default this is false meaning that Camel synchronizes the call to the aggregate method. Though in some use-cases this can be used to archive higher performance when the AggregationStrategy is implemented as thread-safe.
+        type: boolean
+      description:
+        title: Description
+        description: "Sets the description of this node."
+        type: object
