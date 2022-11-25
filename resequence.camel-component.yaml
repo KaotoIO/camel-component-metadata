@@ -34,3 +34,11 @@ spec:
         title: "Description"
         description: "Sets the description of this node."
         type: object
+      simple:
+        title: Simple
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
+      constant:
+        title: Constant
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
