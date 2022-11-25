@@ -22,8 +22,12 @@ spec:
         title: Expression
         description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
         type: object
-      resequencerConfig:
-        title: Resequencer Config
+      streamConfig:
+        title: Stream Config
+        description: "To configure the resequencer in using either batch or stream configuration. Will by default use batch configuration."
+        type: object
+      batchConfig:
+        title: Batch Config
         description: "To configure the resequencer in using either batch or stream configuration. Will by default use batch configuration."
         type: object
       description:
