@@ -1,0 +1,48 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: routing-slip
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1U0bUX4WW3XBBGW/uCseILmWY+s9MZ7yCXrLplA/h61r679HJ0UH5HgFhzQnuEN4ZliHWKiyddh4J2kmd9mGCam1edeBAqC0eilYlhaZFODKONbI+Db6qjD5OvfLGXfLhAlE69LrqrhbQkHcDGjpbEK3nKk78Bz2LNN8Op1bUOt9C5zNkw26Qo1OKnkFym5eTXtuiyW7uc2J6Z9fby+PnH67Dg/IAEKwUwYDJt8ObZMzcmECqDB88tewiRoRqH6SBOG+hsUl9Ai3ESWpMk7RtFjUtAofShciXGeC7VFYw5xSPNlx5y6tzJgBnPn0AnCMJAp6jRo0iTKl3KtClSEE6jSp1K9SnRqlizah0Kp6vXr2DDih0LIAEAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "0"
+    kaoto.io/maxbranches: "0"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Routing Slip"
+    description: "Attach a Routing Slip to each message, specifying the sequence of processing steps. Wrap each component with a special message router that reads the Routing Slip and routes the message to the next component in the list."
+    required:
+      - expression
+    type: object
+    properties:
+      expression:
+        title: Expression
+        description: "Expression to define the routing slip, which defines which endpoints to route the message in a pipeline style. Notice the expression is evaluated once, if you want a more dynamic style, then the dynamic router eip is a better choice."
+        type: object
+      uriDelimiter:
+        title: URI Delimiter
+        description: "Sets the uri delimiter to use."
+        type: string
+      ignoreInvalidEndpoints:
+        title: Ignore Invalid Endpoints
+        description: "Ignore the invalidate endpoint exception when try to create a producer with that endpoint."
+        type: boolean
+      cacheSize:
+        title: Cache Size
+        description: "Sets the maximum size used by the org.apache.camel.spi.ProducerCache which is used to cache and reuse producers when using this routing slip, when uris are reused. Beware that when using dynamic endpoints then it affects how well the cache can be utilized. If each dynamic endpoint is unique then its best to turn of caching by setting this to -1, which allows Camel to not cache both the producers and endpoints; they are regarded as prototype scoped and will be stopped and discarded after use. This reduces memory usage as otherwise producers/endpoints are stored in memory in the caches. However if there are a high degree of dynamic endpoints that have been used before, then it can benefit to use the cache to reuse both producers and endpoints and therefore the cache size can be set accordingly or rely on the default size (1000). If there is a mix of unique and used before dynamic endpoints, then setting a reasonable cache size can help reduce memory usage to avoid storing too many non frequent used producers."
+        type: integer
+      description:
+        title: "Description"
+        description: "Sets the description of this node."
+        type: object
+      simple:
+        title: Simple
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
+      constant:
+        title: Constant
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
