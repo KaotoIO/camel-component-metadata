@@ -1,0 +1,27 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: rollback
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;R0lGODlhUgAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABQAC8AggAAAAAAAICAgLvg48z/mf///wECAwECAwP/WLrc/jDKSau9OGsYuv9gKI5k+W2Kqa4siRYdIc90bd94rndvrP/AIK4jEGx8wqRyGCgeA8uaKjojGjXI5GfA7Xq5n6X1qe18z2hwdte8ZtbMtFwOt42xUPZ8T//d33lDfINpdTJ/GIZmhIxngVJtZHaNlI43iBdwAZVqLV6Ph5F4k5wBmV+gmBZrm10CjaarqJBOo1VfRa+DsRWtnzSqvY++XLm5e7wUxGDAooC3uMbHhaeWobXPh2fS0mjJE8vM126JgeHc3KjVs+MM6O/w8ehd3xLhA+bOBfL8/dP06361s0XgHDxvAelV0ZfJ3LZ51GRZK8hw1bBoxpAlFEcRjVs5YBh1aZQocGA2aMVE8qkXIdywisKkcAKTMBVMZaAKzmyxiONCjw0vzSx16Sa4nNqGMkLakVzQOEqR5QiG08+9qIZMfgTSEyvTZkAtlhnqQQjVo2I87Cqr5Ky9r1ynUGkqaa7duGFj3t071ehbvoDt+G3Js7BhEXlxHl5sOLEFf5Aj93uxT7Lly7kSAAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Rollback"
+    description: "The redelivery in transacted mode is not handled by Camel but by the backing system (the transaction manager). In such cases you should resort to the backing system how to configure the redelivery."
+    properties:
+      markRollbackOnly:
+        title: Mark Rollback Only 
+        description: "Mark the transaction for rollback only (cannot be overruled to commit)"
+        type: boolean
+      markRollbackOnlyLast:
+        title: Mark Rollback Only Last 
+        description: "Mark only last sub transaction for rollback only. When using sub transactions (if the transaction manager support this)"
+        type: boolean
+      message:
+        title: Message
+        description: "Message to use in rollback exception"
+        type: string
