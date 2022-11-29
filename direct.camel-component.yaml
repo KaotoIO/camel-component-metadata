@@ -10,9 +10,7 @@ metadata:
 spec:
   definition:
     title: "Direct"
-    description: |-
-The Direct component provides direct, synchronous invocation of any consumers when a producer sends a message exchange.
-This endpoint can be used to connect existing routes in the same camel context.
+    description: "The Direct component provides direct, synchronous invocation of any consumers when a producer sends a message exchange. This endpoint can be used to connect existing routes in the same camel context."
     required:
       - endpoint
     type: object
