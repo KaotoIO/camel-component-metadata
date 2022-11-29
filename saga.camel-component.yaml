@@ -7,7 +7,7 @@ metadata:
     camel.apache.org/provider: "Kaoto Bridge"
     camel.apache.org/kamelet.group: "Knative"
     kaoto.io/minbranches: "1"
-    kaoto.io/maxbranches: "-1"
+    kaoto.io/maxbranches: "1"
   labels:
     camel.apache.org/kamelet.type: "action"
 spec:
