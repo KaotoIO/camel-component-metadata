@@ -1,0 +1,58 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: Camel-Connector
+metadata:
+  name: direct
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA2NCA4OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNjQgODg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojMERDNTRDO30KCS5zdDF7ZmlsbDojMDg5NjJEO30KCS5zdDJ7ZmlsbDojRkRGRkZGO30KPC9zdHlsZT4KPGcgaWQ9IkxheWVyXzQiPgoJPHBhdGggY2xhc3M9InN0MCIgZD0iTTU4LDg4SDZjLTMuMywwLTYtMi43LTYtNlY2YzAtMy4zLDIuNy02LDYtNmgzNmwyMiwyMnY2MEM2NCw4NS4zLDYxLjMsODgsNTgsODh6Ii8+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNDIsMGwyMiwyMkg0MlYweiIvPgoJPHBhdGggY2xhc3M9InN0MiIgZD0iTTEyLDM0LjV2MjhoNDB2LTI4SDEyeiBNMTcsMzkuNWgxMi41VjQ2SDE3VjM5LjV6IE0xNyw1MWgxMi41djYuNUgxN1Y1MXogTTQ3LDU3LjVIMzQuNVY1MUg0N1Y1Ny41eiBNNDcsNDYKCQlIMzQuNXYtNi41SDQ3VjQ2eiIvPgo8L2c+Cjwvc3ZnPgo="
+    camel.apache.org/provider: "Kaoto Bridge"
+  labels:
+    camel.apache.org/kamelet.type: "sink"
+spec:
+  definition:
+    title: "Direct"
+    description: |-
+The Direct component provides direct, synchronous invocation of any consumers when a producer sends a message exchange.
+This endpoint can be used to connect existing routes in the same camel context.
+    required:
+      - endpoint
+    type: object
+    properties:
+      endpoint:
+        title: "Endpoint" 
+        description: "String to uniquely identify the endpoint"
+        type: string
+        example: "bean:orderService?method=validate"
+        path: true
+      bridgeErrorHandler:
+        title: Bridge Error Handler
+        description: "Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions occurred while the consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored."
+        type: boolean
+      exceptionHandler:
+        title: Exception Handler
+        description: "To let the consumer use a custom ExceptionHandler. Notice if the option bridgeErrorHandler is enabled then this option is not in use. By default the consumer will deal with exceptions, that will be logged at WARN or ERROR level and ignored."
+        type: object
+      exchangePattern:
+        title: Exchange Pattern
+        description: "Sets the exchange pattern when the consumer creates an exchange."
+        type: object
+        example: InOnly
+      block:
+        title: Block
+        description: "If sending a message to a direct endpoint which has no active consumer, then we can tell the producer to block and wait for the consumer to become active."
+        type: boolean
+      failIfNoConsumers:
+        title: Fail If No Consumers
+        description: "Whether the producer should fail by throwing an exception, when sending to a DIRECT endpoint with no active consumers."
+        type: boolean
+      timeout:
+        title: Timeout
+        description: "The timeout value to use if block is enabled."
+        type: integer
+      lazyStartProducer:
+        title: Lazy Start
+        description: "Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel’s routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing."
+        type: boolean
+      synchronous:
+        title: Synchronous
+        description: "Whether synchronous processing is forced. If enabled then the producer thread, will be forced to wait until the message has been completed before the same thread will continue processing. If disabled (default) then the producer thread may be freed and can do other work while the message is continued processed by other threads (reactive)."
+        type: boolean
