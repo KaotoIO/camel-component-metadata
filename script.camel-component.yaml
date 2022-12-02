@@ -1,0 +1,23 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: script
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhUgAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABQAC8AggAAAAAAAICAgLvg48z/mf///wECAwECAwP/WLrc/jDKSau9OGsYuv9gKI5k6W2Lqa7siCodIc90bd94nndvEevAoPDWERg3v6FySQwYBcgAcyidmZrP6BTosQ6+4PCgSiseNcmtLfAls8VistV5zqTVsg7YDY+v6VBocnhve159hjVmgXaDU3p+eYiJZYBahIh8k2N/WYJqkH2ak46Ll0yFmYeknXUYd1SbnJKbpZafBAJLqaKrqoq3jTJPsbW+vcCewrlPulyyo7+Vyq9VzcQ70MdwttQXP9fNOLzc25HTrt/W4eKK2rSsya7s9PX0Ze8E5Odz1Pb/9dbk2xemWzoL4O4RGZiv38EKCa/pIEiJYptWjKoNazeRjKExeRnVbTQixOIsfQ3zBNPITInJaMjQhUToqKTHeDJP7bopzeFMiDVt4nyJUScqgjDLgTT6KCbRpbjw6OOVlJ9KbzSl4quYcipWoForXYTX8+pDCrC0diEb0yfTsPoqkcBydkJauFJNRcULV+8yvn1XqmtBuPCIr2gNK16M2ALAx5AjN+shubJldgkAADs="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "0"
+    kaoto.io/maxbranches: "0"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Script"
+    description: "The Script EIP is used for executing a coding script. This is useful when you need to invoke some logic that are not in Java code such as JavaScript, Groovy or any of the other Languages. 	The returned value from the script is discarded and not used. If the returned value should be set as the new message body, then use the Message Translator EIP instead."
+    type: object
+    type: object
+    properties:
+      properties:
+        description: Configuration needed to run the script.
+        type: object
