@@ -2,6 +2,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: EIP
 metadata:
   name: sample
+  annotations:
     camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AMQAAP///+fn58z/md/f38b3lLnni7LfhqbPfLi4uJzDdZm/c4yvaZmZmYGhYYCAgHKPVmZ/TFpwQ01gOjpIKzNAJi04IhogExMYDg0QCgYIBQUHBAAAAP4BAgAAAAAAAAAAACH5BAUUABwALAAAAABWADYAAAX/4CaOZGmeaKquLAm8QCvPdH3C8SbsfO//wKBwSCyKBoNArshsOp9BkcPBWEKv2CxPSrVqv+AhtyoKm8/bzZSsQ7u/Y+97/oyX6fimvZ3vC/d+gUCAgoU7hIaCiIl+i4x5jo90kZJvlJVol5hmmptgnZ5aoKFYo2YGExsVCYGmYRQjFwSNal13PhA2ursmFD+UBgrCw8TFxscKFiQFtGtyeQsaIg+ttWyFCRsNitbPeQYbCtzOt37g4tXkfObh47brfefu130JEBARGxL3rJDd5XQKZCiRgZk/dYHykYjQ7F0ggSMKNqTnR+EGhhO9BRwoMSPAPPkweoSXpwAGgyMNXh0o5IqUk5YumcCMSWQmzT//SN4slXNnmD28ggqVoW6o0aMlnL0YMKWp06dQo0qdSrWqVadVll7dyrWrV6hZAQRgQLas2bNo06pdy7at27IIcMidS7eu3bt48+p9EQIAOw=="
     camel.apache.org/provider: "Kaoto Bridge"
     camel.apache.org/kamelet.group: "Knative"
