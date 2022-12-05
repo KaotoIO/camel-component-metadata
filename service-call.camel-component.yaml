@@ -1,0 +1,84 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: service-call
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhUgAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABQAC8AggAAAAAAAICAgLvg48z/mf///wECAwECAwP/WLrc/jDKSau9OGsYuv9gKI5k6W2Lqa7siCodIc90bd94nndvEevAoPDWERg3v6FySQwYBcgAcyidmZrP6BTosQ6+4PCgSiseNcmtLfAls8VistV5zqTVsg7YDY+v6VBocnhve159hjVmgXaDU3p+eYiJZYBahIh8k2N/WYJqkH2ak46Ll0yFmYeknXUYd1SbnJKbpZafBAJLqaKrqoq3jTJPsbW+vcCewrlPulyyo7+Vyq9VzcQ70MdwttQXP9fNOLzc25HTrt/W4eKK2rSsya7s9PX0Ze8E5Odz1Pb/9dbk2xemWzoL4O4RGZiv38EKCa/pIEiJYptWjKoNazeRjKExeRnVbTQixOIsfQ3zBNPITInJaMjQhUToqKTHeDJP7bopzeFMiDVt4nyJUScqgjDLgTT6KCbRpbjw6OOVlJ9KbzSl4quYcipWoForXYTX8+pDCrC0diEb0yfTsPoqkcBydkJauFJNRcULV+8yvn1XqmtBuPCIr2gNK16M2ALAx5AjN+shubJldgkAADs="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "0"
+    kaoto.io/maxbranches: "0"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Service Call"
+    description: "Use a Service Call acting as a Messaging Gateway for distributed systems, that handles the complexity of calling the service in a reliable manner. In a nutshell, the EIP pattern sits between your Camel application and the services running in a distributed system (cluster). The pattern hides all the complexity of keeping track of all the physical locations where the services are running and allows you to call the service by a name."
+    required:
+      - name
+    type: object
+    properties:
+      name:
+        title: "Name"
+        description: "Sets the name of the service to use."
+        type: string
+        example: 'sc'
+      expression:
+        title: "Expression"
+        description: "Configures the Expression using the given configuration."
+        type: object
+      uri:
+        title: "URI"
+        description: "The uri of the endpoint to send to. The uri can be dynamic computed using the org.apache.camel.language.simple.SimpleLanguage expression."
+        type: string
+      component:
+        title: "Component"
+        description: "The component to use."
+        default: 'http'
+        example: 'http'
+        type: string
+      pattern:
+        title: "Exchange Pattern"
+        description: "Sets the optional ExchangePattern used to invoke this endpoint."
+        example: 'InOnly'
+        type: string
+      configurationRef:
+        title: "Service Call Configuration Bean"
+        description: "Refers to a ServiceCall configuration to use."
+        type: string
+      serviceDiscoveryRef:
+        title: "Service Discovery Configuration Bean"
+        description: "Sets a reference to a custom ServiceDiscovery to use."
+        type: string
+      serviceFilterRef:
+        title: "Service Filter Configuration Bean"
+        description: "Sets a reference to a custom ServiceFilter to use."
+        type: string
+      serviceChooserRef:
+        title: "Service Chooser Configuration Bean"
+        description: "Sets a reference to a custom ServiceChooser to use."
+        type: string
+      loadBalancerRef:
+        title: "Load Balancer Bean"
+        description: "Sets a reference to a custom ServiceLoadBalancer to use."
+        type: string
+      expressionRef:
+        title: "Expression Bean"
+        description: "Sets a reference to a custom Expression to use."
+        type: string
+      serviceDiscoveryConfiguration:
+        title: "Service Discovery configuration"
+        description: "Configures the ServiceDiscovery using the given configuration. If none provided, it will take the bean with the proper class definition."
+        type: object        
+      serviceFilterConfiguration:
+        title: "Service Filter configuration"
+        description: "Configures the ServiceFilter using the given configuration. If none provided, it will take the bean with the proper class definition."
+        type: object
+      loadBalancerConfiguration:
+        title: "Load Balancer configuration"
+        description: "Configures the LoadBalancer using the given configuration. If none provided, it will take the bean with the proper class definition."
+        type: object
+      description:
+        title: "Description"
+        description: "Sets the description of this node."
+        type: object
