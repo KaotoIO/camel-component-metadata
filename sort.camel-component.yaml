@@ -1,0 +1,36 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: sort
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,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"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Sort"
+    description: "Use a special filter, a Message Translator, between other filters to sort the content of the message."
+    required:
+    properties:
+      expression:
+        title: "Expression"
+        description: "Expression to validate"
+        type: object
+      simple:
+        title: "Simple Expression"
+        description: "Expression to validate"
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression to validate"
+        type: string
+      comparator:
+        title: "Comparator"
+        description: "Comparator used to sort"
+        type: string
+      description:
+        title: "Description"
+        description: "Description of the node"
+        type: object
