@@ -1,0 +1,25 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: throw-exception
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhUQAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABPAC8AgQAAAAAAAICAgP///wK7nI+py+0Po5y02ouzjqH3DYadQJJfiFZByZrpC61tG8C2Is/0zQ+5zqr1YD+ga5gqGgVCpGi5cz6hpaZ0owRar5msbsu9eKNhLBRcxoxPadAoiG5rPGw50d6L4937m77fBXgnmERYiEOXqPgnh8aI8JjmOBFZNilRGXZpoJiQybXpo/d5FVrnaci5YHUKmSq6CJmI+roq20Bqxzpaa3vQ+tuLc8uQ2yhLRyscjLns2uysCh29WA0cjZ1aAAA7"
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Throw Exception"
+    description: "Throw a Java Exception to the thread."
+    required:
+      - exceptionType
+    properties:
+      exceptionType:
+        title: "Exception Type"
+        description: "Java class with the exception type."
+        type: string
+      message:
+        title: "Message"
+        description: "Message to include in the exception."
+        type: string
