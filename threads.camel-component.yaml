@@ -1,0 +1,62 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: threads
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhUgAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABQAC8AggAAAAAAAICAgMz/mf///wECAwECAwECAwP/SLrc/jDKSau9OGsYuv9gKI5k+W2Kqa4siRLdIM90bd94rndvrP/AIK4jEGx8wqRyGCgeA8uodEA0apDT7K/61Hp3TWsG+y3LuFeoeU0Nd9lm9FgN/8ox5Pr0fsnro3wWfn9KgRU+AoRShhSIRYqFbmkyRZVAdHY3jBOOlY9MmFlQoW1OkwOeqTYghaszoZsSnamWZyFJHq81mHe0vr/ARS0smq+SCsHJwbasQh9nuzSxEbO0u8+4sLrSx3hqv6Blo6vdfd+qO2ukpWLelLWQl+WC5/HZpnP2gPOH6/pg+Nz9u9fO3ECCbw7KC2hQ4cKC9Bw+TCiRCcOIFXNM4+AvKyM7ih65XewXUhO/Rh0zbnwwrKXLESNRvpzpMqYFZThz6vT0gsDOn0B9JQAAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Threads"
+    description: "Submit the message to a thread pool, which then is responsible for the continued routing of the message."
+    required:
+    properties:
+      executorService:
+        title: "Executor Service"
+        description: "To use a custom thread pool."
+        type: object
+      poolSize:
+        title: "Pool Size"
+        description: "Sets the core pool size."
+        type: integer
+      maxPoolSize:
+        title: "Maximum pool size"
+        description: "Sets the maximum pool size."
+        type: integer
+      keepAliveTime:
+        title: "Keep Alive Time"
+        description: "Sets the keep alive time for idle threads."
+        type: numeric
+      timeUnit:
+        title: "Time Unit"
+        description: "Sets the keep alive time unit. By default SECONDS is used."
+        example: NANOSECONDS
+        type: string
+      maxQueueSize:
+        title: "Maximum Queue Size"
+        description: "Sets the maximum number of tasks in the work queue. Use -1 or Integer.MAX_VALUE for an unbounded queue."
+        type: integer
+      allowCoreThreadTimeOut:
+        title: "Allow Core Thread Time Out"
+        description: "Whether idle core threads are allowed to timeout and therefore can shrink the pool size below the core pool size Is by default false."
+        type: boolean
+      threadName:
+        title: "Thread Name"
+        description: "Sets the thread name to use."
+        type: string
+      rejectedPolicy:
+        title: "Rejected Policy"
+        description: "Sets the handler for tasks which cannot be executed by the thread pool."
+        example: "DiscardOldest"
+        type: string
+      callerRunsWhenRejected:
+        title: "Caller Runs When Rejected"
+        description: "Whether or not to use as caller runs as fallback when a task is rejected being added to the thread pool (when its full). This is only used as fallback if no rejectedPolicy has been configured, or the thread pool has no configured rejection handler. Is by default true."
+        type: boolean
+      description:
+        title: "Sets the description of this node."
+        description: "Sets the description of this node."
+        type: object
