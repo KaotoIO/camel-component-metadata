@@ -1,0 +1,20 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP
+metadata:
+  name: transacted
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhUgAxAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAAAABQAC8AggAAAAAAAICAgMz/mf///wECAwECAwECAwP/SLrc/jDKSau9OGsYuv9gKI5k+W2Kqa4siRLdIM90bd94rndvrP/AIK4jEGx8wqRyGCgeA8uodEA0apDT7K/61Hp3TWsG+y3LuFeoeU0Nd9lm9FgN/8ox5Pr0fsnro3wWfn9KgRU+AoRShhSIRYqFbmkyRZVAdHY3jBOOlY9MmFlQoW1OkwOeqTYghaszoZsSnamWZyFJHq81mHe0vr/ARS0smq+SCsHJwbasQh9nuzSxEbO0u8+4sLrSx3hqv6Blo6vdfd+qO2ukpWLelLWQl+WC5/HZpnP2gPOH6/pg+Nz9u9fO3ECCbw7KC2hQ4cKC9Bw+TCiRCcOIFXNM4+AvKyM7ih65XewXUhO/Rh0zbnwwrKXLESNRvpzpMqYFZThz6vT0gsDOn0B9JQAAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Transacted"
+    description: "Use a Transactional Client—make the client’s session with the messaging system transactional so that the client can specify transaction boundaries."
+    required:
+    properties:
+      ref:
+        title: "Transactional Bean Reference"
+        description: "Corresponding bean id of the transaction policy."
+        type: string
