@@ -1,0 +1,58 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: wire-tap
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlh/gG1ANUAAP////f39+/v7+fn58z/md/f38b3lNfX17nni8zMzLLfhr6+vqbPfLW1tZzDda2trZm/c6SkpIyvaZmZmYGhYYuLi4WFhXKPVnx8fHNzc2Z/TGZmZlpwQ1paWk1gOlFRUUpKSkJCQjpIKzw8PDNAJjMzMy04IioqKiEhIRogExkZGRMYDg8PDw0QCgkJCQUHBAAAAP4BAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUUADEALAAAAAD+AbUAAAb/QIBwSCwaj8ikcslsOp/QqHRKrVqv2Kx2y+16v+CweEwum8/otHrNbrvf8Lh8Tq/b7/i8fs/v+/+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnF0wRZ9En6FOMKanpJ2qq6ybqaOiVamttLW2jqSwQrNRvLe/wMF8uQDExbvHxaZJvKdDo77C0tPUW8TGocvJ26DdyMrf1eLj5FC6x9jP6kfRycbl8PHy5/ThqNHNztvt8v3+tvXShWPmzd26fwgT1pr1yt7Bgt+0SVRIsSInhrG46WNnZFk2cBZDihTJb6TJk+RKolzJ8pfKljBjypxJs6bNmzhz6tzJs6fP/59AgwodSrSo0aNIkypdyrSp06dQo5q5R7Wq1atYs2rdynVjvK5gw4oFK26s2bNoyT5Ly7ZtW39u48p92Wqu3btWRdGFZKpAgQFfYRAYTLiw4cOIEytezLhx37/TtF2E4RewZFcwMGCIELix58+gQyc2pZmztMuaSG8GObl0Z9GwY8smrNq0MNSZarPG7BqeqdnAgzvOvPr03ke6cWPS7Vuw8OfQBzO/fRwXcc7KL01P6Ty699nbgWW3lLx6o/Blu39fHxr9rfGVyqtyT+03+/uf6S80z0h+J/3G4ScgYwDWxd8i/rVWXDn2DeigYQWyAh8lCfK2IHcPZkjbdZEdqP9Ihalx2JyGGka4yoSTgJibiAyqR6KAJs7nYSIqLscihi86GON/MyJSo3Y3TvGAZkQWaeSRSCap5JJLWqBFgznityMSQzJp5ZVYXulkLz0e8iN5QUJRAAohbGDmmWimqeaabLbp5pofuIDCCglgAWWU7E1ZxJhlvunnn4C+GeecdT6BoiRfxhfmEyNUsMCjkEYq6aSUVmrppZQ2gMIDCTxwQgBX3Innd3oS0SimqKaqKqqacuopqKV0aUiihqICSKlCPBDCqrz2uuoGHSQg7AYYhOriqN7hCoCuvjbr7KTACpsAsbUiUdWTdlrD4aFLYOSHsiBg0MC45JZr7rnopqv/7rrpbiptAyoYi+x94IrL7r345nuvu8LCWy1HEPWSrRe0MuGLrGVE+IAARQTAwgP6RixxvhOgIK2wKBzgxMIdHTvvcwozTITDEE9s8snlVnxxAhkbwTEo+AAsRZcIw+watwR1e1lD6OSCmleyLFqEZi8DkMAJDySt9NJMN+3001BH/XQGIKwMgm1LEC3yLh5/HFyEWg9xtNRkl2122VRbjbUQYa9l7dtrMaSPrdf8PLczcjcEtM2r4Zwz3PtktPNB7wTdmxJFctxACWc37vjZHQR7cQcVOJG4yKKyp4AIMJjggI5CE3E5AIs/bvrpTUe+MuVGjL5bRh0R/tBH9rzD/3PhthfON3ay7u3t7bAHz80UqmWZ+AQhRKD88sw37/zz0EcvPfQfbLAyscZfnvl6JJyyggEDFp89Bg8gP/356KePfvXXh2DlwtnFPDztBeE+kEEOCS68XjfXrIzu9MPf/e7XI/FlrwIVCMEEFsjABjrwgRCMoAQnGEEQZOB64yNSBRKQOQ3g5S4kOIwBjYdABVLwhChM4Qkt2D4rbTB+cPudzOwHM/oBcCDtKBjxCIjDHnbsHsY6XBKKtMFllQCBSEyiEpfIxCY68YlOBIH1LraBLTGBiIXKnAIgwMUuevGLYAwjBFKACgSEL3RDwKIRocjGNrqxjVK8nhXTqMEsyv8vdv+zFdckYzvYzS1/8/MhO7blv3XI0JD7G56d0Mg2DBRRCEd7oyQn+cYPVO1iV7OcIwvFtQdJ4AWmuADohIgEzTzSaCegpCpXuURLqq11m9QL4LzxEhvOjoeBwyXPBtm/UAHskBFJpLcMdyEknFIIAmiBBZbJzGY685nQjKY0pxnNDZRgZSVYgBOO2ckHOQAGFHhQhLiZTGqa85zoPKc1V3YCbRaBm697iOyECUjg6Q+QwZQn//pGM4j0kWu4zKUiZ8bIJIygAxlMqEKJxIIFSGsBLJDXgxQAAwiIs6BIKAFCF8rR7DX0oRGN1SwDSsN/5hOgAhXoLjvWy0X6zm7/ushH3rKgLAuMIAM4zalOd8rTnvr0p0D1aQkwIC0LfECiDqKoRUdZzCfYNKhQjapUozrUoh5VpIME4g9r6LN6EA5ve5zf4PS5lpYqaG1PCAAKNjDVtrpVqhtQgUNZVgCkDkipFyVlWtf61r76dadxnSsK6orVs8bTRnp9wgJUUIIROPaxkI2sZCdL2cpadrIoYAEIUIBWgmYIr0ztrBMW29jLmva0qL1sZjcrWmsVMhA6jISyhFAAC3T0tljaAAg0tsgBOUADGuAADDwA3M9JCaNJqC1ul7sk3fL2X4b1m3USW5+uRQcBoETFC8x4XOruR0ZmtVBrAzQg4aKCA2f0/y4tpHseQoK3qdXYnnewe4rtphe+AHntrdzLI/VS50HmhQF67zteA72Xdwd+zYDoa18CdyjB7O0Pct9j3e8Id8AONg6E9fuH2cooQwhoAXczTJ0NJ3hEGWJAhjysKBP3F78d8hqpJjwZFxsWxTKGDospxOFv8ffGLcpxdHacoh73IbZ8ofF+hKxjJYfIxuJVMJOBQ2REGXkYP44yjqcMHievaMMfDPNc/BsMMZs5K2Q+0ZnXjJb+sfnNYUmzS+D8ZjnziM54RvOCCsDcPvt5SQWWBp//TOjsBboVgy60oplrm0Qv+tEcPXQwHA3pSttZFZS2tKavZJsBqO/ToA61qP/P14B+eHrUny4NqkddamqcetWwjrWsI9BqqVhCM7bONVRwreteL4XXvg62UYAt7GL7ZAJHmoCxl62TAxzpucyONk2QTSRlS/vaM3E2kaCN7W6vhNrW9ra4UaJtbo/73BZZILrXXZEBPCppjyIsu+c9jgEg7wUsKIG+960CGIzAAoCht8CBIQAUlGADFaB1pBoQgQlsYAQnkPfAJ84KDIwAAxaYgMIhxfAJ2PbiFA/5KiyOcY03YOEN/3ixRM5yTZA84xt/VMdV3vKaX+LlJke5x0lu855PAucxX8DMee7zojsC6CfneMqJbvSmJwLpOqe506duCKgrfecgp7rWBWH/dZkvPetbD3sfui70r69c7GjPA9mHDva0u50Oazf72+c+h7hj/ex0zzsb7C51vfs9DXxn+t8HT4bAt53wiP+C4fGe+MZvYfGOj/zjLw7zpHv97pLP/BUgr/nOS4Hzng99E0Av+tKXkvI5v3rfTc960aE+6GxnfOtZT/rZ0/71li875m0/+9rzXvS+/73ngy98zRO/+JI/PvIdr/zlJ775zic8zj2eRAtUYPfRN34JQHACfO+b3zA4QQiGmv3OZ4AFH5jAylY2gQ6wIAPl13wEUKD+9a9s/pWLf+YXEIIWaHRNJZBvD6B/nicAC1ABR2IBCxBwBGh6xNaArfeAEOiA/7I3gcBXgRY4fBiYgca3gRzYeNRWJOH2gZGnbUVibiSYeCGIASOYgo5nghiAgi6IeOA2g5pXbjaoeeqWg5l3ADLIg1MXZkDYckI4hCInX11WGUY4cUgoG1W2hLbWhLHxhFAYFVIIG1RYhU9xhaKRhVrYFFzYHl72hb0WhqDhhWSoFGaYH2OYhlFYYU7Yhm5ohXA4hXI4h1tYh1h4h3gIhnrYhXzYh0uxhp6BhoI4FIQ4HJd2iHS4HobIiECRiAQSiJBoFJK4GI9YiT1xiYqRiZq4E5w4GpT4iUIRiojhiaSIE6YoQqOYij+xihDSiq64iR+0iLN4FGFmi7d4FJm2XBiStotK0Yu49YvAiBSvNmvMU2vFuIwwEQQAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Wire Tap"
+    description: "Wire Tap from the EIP patterns allows you to route messages to a separate location while they are being forwarded to the ultimate destination."
+    properties:
+      copy:
+        title: "Copy"
+        description: "Uses a copy of the original exchange."
+        type: boolean
+      dynamicUri:
+        title: "Dynamic URI"
+        description: "Whether the uri is dynamic or static. If the uri is dynamic then the simple language is used to evaluate a dynamic uri to use as the wire-tap destination, for each incoming message. This works similar to how the toD EIP pattern works. If static then the uri is used as-is as the wire-tap destination."
+        type: boolean
+      onPrepare:
+        title: "On Prepare"
+        description: "Uses the Processor when preparing the org.apache.camel.Exchange to be sent. This can be used to deep-clone messages that should be sent, or any custom logic needed before the exchange is sent."
+        type: object
+      executorService:
+        title: "Executor Service"
+        description: "Uses a custom thread pool."
+        type: object
+      pattern:
+        title: "Pattern"
+        description: "Sets the optional ExchangePattern used to invoke this endpoint."
+        type: string
+        example: "InOptionalOut"
+      cacheSize:
+        title: "Cache Size"
+        description: "Sets the maximum size used by the org.apache.camel.spi.ProducerCache which is used to cache and reuse producers when using this recipient list, when uris are reused. Beware that when using dynamic endpoints then it affects how well the cache can be utilized. If each dynamic endpoint is unique then its best to turn of caching by setting this to -1, which allows Camel to not cache both the producers and endpoints; they are regarded as prototype scoped and will be stopped and discarded after use. This reduces memory usage as otherwise producers/endpoints are stored in memory in the caches. However if there are a high degree of dynamic endpoints that have been used before, then it can benefit to use the cache to reuse both producers and endpoints and therefore the cache size can be set accordingly or rely on the default size (1000). If there is a mix of unique and used before dynamic endpoints, then setting a reasonable cache size can help reduce memory usage to avoid storing too many non frequent used producers."
+        type: integer
+      ignoreInvalidEndpoint:
+        title: "Ignore Invalid Endpoint"
+        description: "Ignore the invalidate endpoint exception when try to create a producer with that endpoint."
+        type: boolean
+      allowOptimisedComponents:
+        title: "Allow Optimised Components"
+        description: "Whether to allow components to optimise toD if they are org.apache.camel.spi.SendDynamicAware ."
+        type: boolean
+      autoStartComponents:
+        title: "Auto Start Components"
+        description: "Whether to auto startup components when toD is starting up."
+        type: boolean
+      description:
+        title: "Descrition"
+        description: "Sets the description of this node."
+        type: object
