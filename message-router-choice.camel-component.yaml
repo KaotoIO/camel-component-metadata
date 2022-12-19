@@ -22,3 +22,8 @@ spec:
         description: Conditional to apply to go through this branch
         type: string
         default: 
+      jq:
+        title: Conditional in Jq form
+        description: Conditional to apply to go through this branch
+        type: string
+        default:

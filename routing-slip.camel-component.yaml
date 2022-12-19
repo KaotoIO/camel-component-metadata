@@ -46,3 +46,7 @@ spec:
         title: Constant
         description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
         type: string
+      jq:
+        title: Jq
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string

@@ -56,3 +56,7 @@ spec:
         description: String constant as expression.
         type: string
         example: 'Hello Kaoto!'
+      jq:
+        description: Jq language expression
+        type: string
+        example: 'to_entries | map(if .key == "field3" then .key = "field3-modified" else . end) | from_entries'

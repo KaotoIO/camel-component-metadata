@@ -27,3 +27,7 @@ spec:
         title: Constant
         description: "Constant value to set the header to."
         type: string
+      jq:
+        title: Jq
+        description: "Jq expression string to set the header to."
+        type: string
