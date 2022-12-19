@@ -1,0 +1,19 @@
+
+apiVersion: camel.apache.org/v1alpha1
+kind: EIP-BRANCH
+metadata:
+  name: do-try
+  annotations:
+    camel.apache.org/kamelet.icon: "data:image/gif;base64,R0lGODlhVgA2AKIAAP///8z/mYCAgAAAAP4BAgAAAAAAAAAAACH5BAQUAP8ALAAAAABWADYAAAP/OLrc/jDKSRm4oOrN+8PZEIxkaZ5oqq5sq4BKK890nSpCHtp875c4XexHLLKCgp1xyRwhlc3o7zmUWm1U0bUX4WW3XBBGW/uCseILmWY+s9MZ7yCXrLplA/h61r679HJ0UH5HgFhzQnuEN4ZliHWKiyddh4J2kmd9mGCam1edeBAqC0eilYlhaZFODKONbI+Db6qjD5OvfLGXfLhAlE69LrqrhbQkHcDGjpbEK3nKk78Bz2LNN8Op1bUOt9C5zNkw26Qo1OKnkFym5eTXtuiyW7uc2J6Z9fby+PnH67Dg/IAEKwUwYDJt8ObZMzcmECqDB88tewiRoRqH6SBOG+hsUl9Ai3ESWpMk7RtFjUtAofShciXGeC7VFYw5xSPNlx5y6tzJgBnPn0AnCMJAp6jRo0iTKl3KtClSEE6jSp1K9SnRqlizah0Kp6vXr2DDih0LIAEAOw=="
+    camel.apache.org/provider: "Kaoto Bridge"
+    camel.apache.org/kamelet.group: "Knative"
+    kaoto.io/minbranches: "1"
+    kaoto.io/maxbranches: "1"
+  labels:
+    camel.apache.org/kamelet.type: "action"
+spec:
+  definition:
+    title: "Do Try Catch"
+    description: "Camel supports the Java equivalent of try …​ catch …​ finally directly in the DSL. It aims to work like its Java sisters but with more power."
+    required:
+    properties:
