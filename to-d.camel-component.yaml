@@ -45,3 +45,7 @@ spec:
         title: "Description" 
         description: "Sets the description of this node."
         type: object
+      parameters:
+        title: "Parameters" 
+        description: "Parameters to pass to the endpoint"
+        type: object
