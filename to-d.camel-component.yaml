@@ -1,5 +1,5 @@
 apiVersion: camel.apache.org/v1alpha1
-kind: Camel-Connector
+kind: EIP
 metadata:
   name: to-d
   annotations:
