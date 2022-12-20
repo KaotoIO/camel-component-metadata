@@ -50,3 +50,7 @@ spec:
         title: "Constant"
         description: "Constant expression."
         type: string
+      jq:
+        title: "Jq"
+        description: "Jq language expression"
+        type: string

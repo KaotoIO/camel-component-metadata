@@ -19,3 +19,7 @@ spec:
         description: Simple language content of the body to set.
         type: string
         example: 'Body: ${body}'
+      jq:
+        description: Jq language content of the body to set.
+        type: string
+        example: '.foo == "baz"'

@@ -24,3 +24,8 @@ spec:
         description: String constant.
         type: string
         example: 'Hello Kaoto!'
+      jq:
+        title: Jq
+        description: Jq language content of the body to set.
+        type: string
+        example: 'to_entries | map(if .key == "field3" then .key = "field3-modified" else . end) | from_entries'

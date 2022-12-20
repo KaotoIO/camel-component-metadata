@@ -26,6 +26,10 @@ spec:
         title: "Constant Expression"
         description: "Expression to validate"
         type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression to validate"
+        type: string
       comparator:
         title: "Comparator"
         description: "Comparator used to sort"
