@@ -19,6 +19,10 @@ spec:
         title: Name of the Property
         description: "Which property are we going to set."
         type: string
+      expression:
+        title: Expression
+        description: "Expression to set."
+        type: object
       simple:
         title: Simple
         description: "Value in simple form to set the header to."
