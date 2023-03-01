@@ -19,6 +19,10 @@ spec:
         description: Simple language content of the body to set.
         type: string
         example: 'Body: ${body}'
+      expression:
+        title: Expression
+        description: "Expression to set."
+        type: object
       constant:
         title: Constant 
         description: String constant.
