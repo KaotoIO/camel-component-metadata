@@ -16,9 +16,26 @@ spec:
     description: "Use a Splitter to break out the composite message into a series of individual messages, each containing data related to one item."
     properties:
       expression:
-        title: Expression
+        title: Expression 
         description: "Expression of how to split the message body, such as as-is, using a tokenizer, or using a xpath."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression of how to split the message body, such as as-is, using a tokenizer, or using a xpath."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression of how to split the message body, such as as-is, using a tokenizer, or using a xpath."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression of how to split the message body, such as as-is, using a tokenizer, or using a xpath."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression of how to split the message body, such as as-is, using a tokenizer, or using a xpath."
+        type: string
       delimiter:
         title: Delimiter
         description: "Delimiter used in splitting messages. Can be turned off using the value false. The default value is ','."
@@ -71,18 +88,6 @@ spec:
         title: Description
         description: "Sets the description of this node."
         type: object
-      simple:
-        title: "Simple"
-        description: "Simple language expression"
-        type: string
-      constant:
-        title: "Constant"
-        description: "Constant expression."
-        type: string
-      jq:
-        title: "Jq"
-        description: "Jq expression."
-        type: string
       tokenize:
         title: "Tokenize"
         description: "Tokenize object."

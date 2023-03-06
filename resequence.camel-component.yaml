@@ -19,9 +19,26 @@ spec:
     type: object
     properties:
       expression:
-        title: Expression
+        title: Expression 
         description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
+        type: string
       streamConfig:
         title: Stream Config
         description: "To configure the resequencer in using either batch or stream configuration. Will by default use batch configuration."
@@ -34,15 +51,3 @@ spec:
         title: "Description"
         description: "Sets the description of this node."
         type: object
-      simple:
-        title: Simple
-        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
-        type: string
-      constant:
-        title: Constant
-        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
-        type: string
-      jq:
-        title: Jq
-        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
-        type: string

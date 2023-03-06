@@ -19,9 +19,26 @@ spec:
     type: object
     properties:
       expression:
-        title: Expression
+        title: Expression 
         description: "Expression to define the routing slip, which defines which endpoints to route the message in a pipeline style. Notice the expression is evaluated once, if you want a more dynamic style, then the dynamic router eip is a better choice."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression to define the routing slip, which defines which endpoints to route the message in a pipeline style. Notice the expression is evaluated once, if you want a more dynamic style, then the dynamic router eip is a better choice."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression to define the routing slip, which defines which endpoints to route the message in a pipeline style. Notice the expression is evaluated once, if you want a more dynamic style, then the dynamic router eip is a better choice."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression to define the routing slip, which defines which endpoints to route the message in a pipeline style. Notice the expression is evaluated once, if you want a more dynamic style, then the dynamic router eip is a better choice."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression to define the routing slip, which defines which endpoints to route the message in a pipeline style. Notice the expression is evaluated once, if you want a more dynamic style, then the dynamic router eip is a better choice."
+        type: string
       uriDelimiter:
         title: URI Delimiter
         description: "Sets the uri delimiter to use."
@@ -38,15 +55,3 @@ spec:
         title: "Description"
         description: "Sets the description of this node."
         type: object
-      simple:
-        title: Simple
-        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
-        type: string
-      constant:
-        title: Constant
-        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
-        type: string
-      jq:
-        title: Jq
-        description: "Expression to use for re-ordering the messages, such as a header with a sequence number."
-        type: string

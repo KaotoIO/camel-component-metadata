@@ -30,3 +30,7 @@ spec:
         title: "Jq Expression"
         description: "Expression to validate"
         type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression to validate"
+        type: string
