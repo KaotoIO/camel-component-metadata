@@ -15,9 +15,10 @@ spec:
     required:
     properties:
       expression:
-        title: "Expression"
+        title: Expression 
         description: "Expression to validate"
         type: object
+        example: '${body}'
       simple:
         title: "Simple Expression"
         description: "Expression to validate"
@@ -28,6 +29,10 @@ spec:
         type: string
       jq:
         title: "Jq Expression"
+        description: "Expression to validate"
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
         description: "Expression to validate"
         type: string
       comparator:

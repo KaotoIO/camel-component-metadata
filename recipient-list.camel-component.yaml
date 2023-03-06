@@ -16,9 +16,26 @@ spec:
       - expression
     properties:
       expression:
-        title: "Expression"
+        title: Expression 
         description: "Expression that returns which endpoints (url) to send the message to (the recipients). If the expression return an empty value then the message is not sent to any recipients."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression that returns which endpoints (url) to send the message to (the recipients). If the expression return an empty value then the message is not sent to any recipients."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression that returns which endpoints (url) to send the message to (the recipients). If the expression return an empty value then the message is not sent to any recipients."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression that returns which endpoints (url) to send the message to (the recipients). If the expression return an empty value then the message is not sent to any recipients."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression that returns which endpoints (url) to send the message to (the recipients). If the expression return an empty value then the message is not sent to any recipients."
+        type: string
       delimiter:
         title: Delimiter
         description: "Delimiter used if the Expression returned multiple endpoints. Can be turned off using the value false. The default value is ,."
@@ -79,15 +96,3 @@ spec:
         title: Description
         description: "Sets the description of this node."
         type: object
-      simple:
-        title: "Simple"
-        description: "Simple expression."
-        type: string
-      constant:
-        title: "Constant"
-        description: "Constant expression."
-        type: string
-      jq:
-        title: "Jq"
-        description: "Jq expression."
-        type: string

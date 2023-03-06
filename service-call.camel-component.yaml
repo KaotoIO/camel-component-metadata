@@ -24,9 +24,26 @@ spec:
         type: string
         example: 'sc'
       expression:
-        title: "Expression"
+        title: Expression 
         description: "Configures the Expression using the given configuration."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Configures the Expression using the given configuration."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Configures the Expression using the given configuration."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Configures the Expression using the given configuration."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Configures the Expression using the given configuration."
+        type: string
       uri:
         title: "URI"
         description: "The uri of the endpoint to send to. The uri can be dynamic computed using the org.apache.camel.language.simple.SimpleLanguage expression."

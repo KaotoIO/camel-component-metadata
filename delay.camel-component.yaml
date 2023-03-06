@@ -22,6 +22,22 @@ spec:
         description: "Expression to define how long time to wait (in millis)."
         type: object
         example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression to define how long time to wait (in millis)."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression to define how long time to wait (in millis)."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression to define how long time to wait (in millis)."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression to define how long time to wait (in millis)."
+        type: string
       asyncDelayed:
         title: Async Delayed
         description: "Enables asynchronous delay which means the thread will not block while delaying."

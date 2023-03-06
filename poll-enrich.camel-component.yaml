@@ -16,9 +16,26 @@ spec:
       - expression
     properties:
       expression:
-        title: "Expression"
+        title: Expression 
         description: "Expression that computes the endpoint uri to use as the resource endpoint to enrich from."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression that computes the endpoint uri to use as the resource endpoint to enrich from."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression that computes the endpoint uri to use as the resource endpoint to enrich from."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression that computes the endpoint uri to use as the resource endpoint to enrich from."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression that computes the endpoint uri to use as the resource endpoint to enrich from."
+        type: string
       aggregationStrategy:
         title: URI Delimiter
         description: "Sets the AggregationStrategy to be used to merge the reply from the external service, into a single outgoing message. By default Camel will use the reply from the external service as outgoing message ."

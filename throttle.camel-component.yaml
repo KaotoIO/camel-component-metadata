@@ -15,9 +15,26 @@ spec:
     required:
     properties:
       expression:
-        title: "Expression"
+        title: Expression 
         description: "Expression to configure the maximum number of messages to throttle per request."
         type: object
+        example: '${body}'
+      simple:
+        title: "Simple Expression"
+        description: "Expression to configure the maximum number of messages to throttle per request."
+        type: string
+      constant:
+        title: "Constant Expression"
+        description: "Expression to configure the maximum number of messages to throttle per request."
+        type: string
+      jq:
+        title: "Jq Expression"
+        description: "Expression to configure the maximum number of messages to throttle per request."
+        type: string
+      jsonpath:
+        title: "JSON Path Expression"
+        description: "Expression to configure the maximum number of messages to throttle per request."
+        type: string
       correlationExpression:
         title: "Correlation Expression"
         description: "The expression used to calculate the correlation key to use for throttle grouping. The Exchange which has the same correlation key is throttled together."
