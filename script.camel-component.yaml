@@ -15,9 +15,12 @@ spec:
   definition:
     title: "Script"
     description: "The Script EIP is used for executing a coding script. This is useful when you need to invoke some logic that are not in Java code such as JavaScript, Groovy or any of the other Languages. 	The returned value from the script is discarded and not used. If the returned value should be set as the new message body, then use the Message Translator EIP instead."
-    type: object
-    type: object
     properties:
-      properties:
-        description: Configuration needed to run the script.
-        type: object
+      groovy:
+        description: Groovy language content of the body to set.
+        type: string
+        example: 'println "Hello World"'
+      javascript:
+        description: JavaScript language content of the body to set.
+        type: string
+        example: 'var util = require("util"); util.log("Hello World");'
