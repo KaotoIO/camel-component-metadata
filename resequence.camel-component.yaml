@@ -14,8 +14,6 @@ spec:
   definition:
     title: "Resequence"
     description: "Use a stateful filter, a Resequencer, to collect and re-order messages so that they can be published to the output channel in a specified order."
-    required:
-      - expression
     type: object
     properties:
       expression:

@@ -15,11 +15,15 @@ spec:
     title: "Filter"
     description: "The Message Filter from the EIP patterns allows you to filter messages. The message filter implemented in Camel is similar to if (predicate) { block } in Java. The filter will include the message if the predicate evaluated to true."
     properties:
+      expression:
+        title: Expression
+        description: Expression content of the filter.
+        type: object
       simple:
-        description: Simple language content of the body to set.
+        description: Simple language content of the filter.
         type: string
         example: 'Body: ${body}'
       jq:
-        description: Jq language content of the body to set.
+        description: Jq language content of the filter.
         type: string
         example: '.foo == "baz"'

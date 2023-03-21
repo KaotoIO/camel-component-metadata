@@ -15,6 +15,10 @@ spec:
     required:
       - name
     properties:
+      expression:
+        title: Expression
+        description: "Expression to set the header to."
+        type: object
       name:
         title: Name of the Header
         description: "Which header are we going to set."
