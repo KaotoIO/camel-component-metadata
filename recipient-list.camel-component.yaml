@@ -12,8 +12,6 @@ spec:
   definition:
     title: "Recipient List"
     description: "Define a channel for each recipient. Then use a Recipient List to inspect an incoming message, determine the list of desired recipients, and forward the message to all channels associated with the recipients in the list."
-    required:
-      - expression
     properties:
       expression:
         title: Expression 

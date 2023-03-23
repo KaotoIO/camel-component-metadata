@@ -14,8 +14,6 @@ spec:
   definition:
     title: "Routing Slip"
     description: "Attach a Routing Slip to each message, specifying the sequence of processing steps. Wrap each component with a special message router that reads the Routing Slip and routes the message to the next component in the list."
-    required:
-      - expression
     type: object
     properties:
       expression:

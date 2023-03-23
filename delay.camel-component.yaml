@@ -13,8 +13,6 @@ spec:
   definition:
     title: "Delay"
     description: "The Claim Check from the EIP patterns allows you to replace message content with a claim check (a unique key), which can be used to retrieve the message content at a later time."
-    required:
-      - expression
     type: object
     properties:
       expression:

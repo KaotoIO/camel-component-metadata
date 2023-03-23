@@ -13,6 +13,10 @@ spec:
     title: "Transform"
     description: "Transform the body of the message following the Message Translator EIP using en expression in simple language (Apache Camel)."
     properties:
+      expression:
+        title: Expression
+        description: Expression content of the body to set.
+        type: object
       simple:
         description: Simple language content of the body to set.
         type: string

@@ -15,6 +15,10 @@ spec:
     required:
       - name
     properties:
+      expression:
+        title: Expression
+        description: "Expression to set the property to."
+        type: object
       name:
         title: Name of the Property
         description: "Which property are we going to set."
@@ -25,13 +29,13 @@ spec:
         type: object
       simple:
         title: Simple
-        description: "Value in simple form to set the header to."
+        description: "Value in simple form to set the property to."
         type: string
       constant:
         title: Constant
-        description: "Constant value to set the header to."
+        description: "Constant value to set the property to."
         type: string
       jq:
         title: Jq
-        description: "Jq expression to set the header to."
+        description: "Jq expression to set the property to."
         type: string

@@ -11,8 +11,6 @@ spec:
   definition:
     title: "Content Enricher"
     description: "Content Enricher from the EIP patterns."
-    required:
-      - expression
     properties:
       expression:
         title: Expression 

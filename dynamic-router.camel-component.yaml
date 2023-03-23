@@ -12,8 +12,6 @@ spec:
   definition:
     title: "Dynamic Router"
     description: "The Dynamic Router from the EIP patterns allows you to route messages while avoiding the dependency of the router on all possible destinations while maintaining its efficiency."
-    required:
-      - expression
     properties:
       expression:
         title: Expression 
