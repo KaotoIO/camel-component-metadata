@@ -16,14 +16,10 @@ spec:
     title: "Unmarshal"
     description: "Transforms data in some binary or textual format (such as received over the network) into a Java object; or some other representation according to the data format being used."
     required:
-      - dataformat
+      - data-format
     type: object
     properties:
-      dataformat:
+      data-format:
         description: Data Format to transform to.
-        type: string
+        type: object
         example: 'json'
-      properties:
-        description: Properties of the data format.
-        type: array
-        example: 'library=Gson'
