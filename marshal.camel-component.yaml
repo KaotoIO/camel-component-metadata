@@ -23,3 +23,7 @@ spec:
         description: Data Format to transform to.
         type: object
         example: 'json'
+      properties:
+        description: Properties of the data format.
+        type: array
+        example: 'library=Gson'
