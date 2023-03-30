@@ -16,10 +16,10 @@ spec:
     title: "Marshal"
     description: "Transforms the message body (such as Java object) into a binary or textual format, ready to be wired over the network."    
     required:
-      - data-format
+      - dataformat
     type: object
     properties:
-      data-format:
+      dataformat:
         description: Data Format to transform to.
         type: object
         example: 'json'
