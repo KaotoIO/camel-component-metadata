@@ -20,10 +20,12 @@ spec:
         description: Expression content of the filter.
         type: object
       simple:
+        title: Simple Expression
         description: Simple language content of the filter.
         type: string
         example: 'Body: ${body}'
       jq:
+        title: Jq Expression
         description: Jq language content of the filter.
         type: string
         example: '.foo == "baz"'

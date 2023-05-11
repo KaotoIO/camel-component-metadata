@@ -18,10 +18,12 @@ spec:
         description: Expression content of the body to set.
         type: object
       simple:
+        title: Simple Expression
         description: Simple language content of the body to set.
         type: string
         example: 'Body: ${body}'
       jq:
+        title: Jq Expression
         description: Jq language content of the body to set.
         type: string
         example: 'to_entries | map(if .key == "field3" then .key = "field3-modified" else . end) | from_entries'

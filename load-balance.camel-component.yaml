@@ -19,6 +19,7 @@ spec:
     type: object
     properties:
       properties:
+        title: Properties
         description: Properties of the load balancer.
         type: object
         example: 'library=Gson'

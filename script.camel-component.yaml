@@ -21,10 +21,12 @@ spec:
         description: Expression content of the script.
         type: object
       groovy:
+        title: Groovy Expression
         description: Groovy language content of the script.
         type: string
         example: 'println "Hello World"'
       javascript:
+        title: Javascript Expression
         description: JavaScript language content of the script.
         type: string
         example: 'var util = require("util"); util.log("Hello World");'
