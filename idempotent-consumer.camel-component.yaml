@@ -55,6 +55,7 @@ spec:
         type: string
         example: 'Hello Kaoto!'
       jq:
+        title: Jq Expression
         description: Jq language expression
         type: string
         example: 'to_entries | map(if .key == "field3" then .key = "field3-modified" else . end) | from_entries'

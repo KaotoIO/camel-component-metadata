@@ -20,6 +20,7 @@ spec:
     type: object
     properties:
       dataformat:
+        title: Dataformat Type
         description: Data Format to transform to.
         type: object
         example: 'json'
