@@ -43,3 +43,8 @@ spec:
         title: "Description"
         description: "Description of the node"
         type: object
+      tokenize:
+        title: Tokenize
+        description: "tokenize message using a specified delimiter"
+        type: string
+        example: '\n'
