@@ -23,7 +23,7 @@ spec:
         type: string
         example: 'Body: ${body}'
       loggingLevel:
-        title: Loggging Level 
+        title: Logging Level 
         description: Sets the logging level. The default value is INFO.
         type: string
         example: DEBUG
