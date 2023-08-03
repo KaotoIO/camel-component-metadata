@@ -1,6 +1,6 @@
 
 apiVersion: camel.apache.org/v1alpha1
-kind: EIP
+kind: EIP-BRANCH
 metadata:
   name: aggregate
   annotations:
@@ -8,7 +8,7 @@ metadata:
     camel.apache.org/provider: "Kaoto Bridge"
     camel.apache.org/kamelet.group: "Knative"
     kaoto.io/minbranches: "0"
-    kaoto.io/maxbranches: "0"
+    kaoto.io/maxbranches: "1"
   labels:
     camel.apache.org/kamelet.type: "action"
 spec:
@@ -131,6 +131,6 @@ spec:
       description:
         title: Description
         description: Sets the description of this node.
-        type: string
+        type: object
       
       
